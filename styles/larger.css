@@ -90,5 +90,26 @@
     section.place img {
       border: 2px solid #ccc;
     }
+    @media (min-width: 768px) {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 1rem;
+  }
+
+  .container section {
+    width: 48%; /* Adjust width to avoid overflow */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
+
+  .place img {
+    width: 100%;
+    height: auto;
+  }
+}
+
   }
   

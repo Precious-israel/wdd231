@@ -62,6 +62,22 @@ const courses = [
 ];
 
 const certificateSection = document.getElementById("courseContent");
+const certificationFilter = document.getElementById("certificationFilter");
+
+const subjects = ['All', 'CSE', 'WDD'];
+
+// Create filter buttons
+subjects.forEach(subject => {
+    const link = document.createElement("a");
+    link.href = "#";
+    link.textContent = subject;
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const filtered = subject === "All" ? courses : courses.filter(c => c.subject === subject);
+        displayCourses(filtered);
+    });
+    certificationFilter.appendChild(link);
+});
 
 function displayCourses(courseList) {
     certificateSection.innerHTML = "";
@@ -70,7 +86,7 @@ function displayCourses(courseList) {
         const courseCard = document.createElement("div");
         courseCard.className = `course-card ${course.completed ? "completed" : "pending"}`;
         courseCard.innerHTML = `
-            <h3>${course.title}</h3>
+            <h2>${course.title}</h2>
             <p><strong>Category:</strong> ${course.subject}</p>
             <p><strong>Credits:</strong> ${course.credits}</p>
             <p><strong>Technologies:</strong> ${course.technology.join(", ")}</p>
@@ -90,4 +106,5 @@ function updateTotalCredits(courseList) {
     certificateSection.appendChild(totalDiv);
 }
 
+// Initial display
 displayCourses(courses);
