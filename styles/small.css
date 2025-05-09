@@ -1,0 +1,96 @@
+/* Google Fonts */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+h1, h2 {
+  font-family: 'Domine', serif;
+  margin-bottom: 0.5em;
+}
+
+/* Layout Containers */
+header, main, footer {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #004080;
+  color: white;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title img {
+  border-radius: 50%;
+  width: 80px;
+  height: auto;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: none;
+  flex-direction: column;
+}
+
+nav ul li {
+  margin: 0.5rem 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+nav a:hover {
+  background-color: #0066cc;
+}
+
+#menuToggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Responsive Navigation */
+#navMenu.open ul {
+  display: flex;
+}
+
+/* Image Styles */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Avoid text touching screen edges */
+section {
+  padding: 1rem;
+}
+
+/* Footer */
+footer {
+  background-color: #004080;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
