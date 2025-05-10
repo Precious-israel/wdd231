@@ -37,7 +37,7 @@ header {
   display: flex;
   align-items: center;
   gap: 5rem;
-  font-size: larger;
+
 }
 
 .title img {
@@ -124,7 +124,7 @@ img {
 }
 
 #certificationFilter a:hover {
-  background-color: #f0f0f0;
+  background-color: hsl(313, 81%, 47%);
 }
 
 .course-card {
