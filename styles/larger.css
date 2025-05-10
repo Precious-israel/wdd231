@@ -101,5 +101,6 @@
     box-sizing: border-box;
     border: 1px solid #ccc;
     padding: 1rem;
+    flex: 1;
   }
 }
