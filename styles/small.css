@@ -1,44 +1,54 @@
 :root {
-  --primary-color: #002b5c;
-  --secondary-color: #00509e;
-  --highlight-color: #c6f2c6;
-  --warning-color: #ffe4cc;
-  --neutral-background: #f9f9f9;
-  --text-color: #1a1a1a;
+  /* Color Palette */
+  --primary-color: #002b5c;          /* Dark blue for strong contrast */
+  --secondary-color: #00509e;        /* Mid blue */
+  --highlight-color: #c6f2c6;        /* Soft green for highlights */
+  --warning-color: #ffe4cc;          /* Soft orange for warnings */
+  --neutral-background: #f9f9f9;     /* Light neutral for general backgrounds */
   --white: #ffffff;
   --black: #000000;
-  --blue-hover: #66b2ff;
-  --blue-active: #007bff;
-  --blue-active-hover: #0056b3;
-  --high-contrast-text: #111111;
+  
+  /* Text Colors */
+  --text-color: #000000;             /* Body text – black for AAA compliance */
+  --high-contrast-text: #111111;     /* Heading and emphasis text */
+
+  /* Accent Colors */
+  --blue-hover: #00509e;             /* Used for hover – dark enough for AAA */
+  --blue-active: #003f73;            /* Active state – darker blue */
+  --blue-active-hover: #003b61;      /* Hover while active */
 }
 
+/* === Base Styles === */
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
   background-color: var(--neutral-background);
   color: var(--text-color);
+  line-height: 1.6;
 }
 
+/* Headings */
 h1, h2 {
   font-family: 'Domine', serif;
-  text-align: center;
-  margin-bottom: 0.5em;
-  padding: 0.5rem;
   color: var(--high-contrast-text);
+  text-align: center;
+  padding: 0.5rem;
+  margin-bottom: 0.5em;
   border-radius: 5px;
-  background-color: transparent; /* Removed forced color */
+  background-color: transparent;
 }
 
+/* Section Title */
 .section-title {
   background-color: var(--primary-color);
   color: var(--white);
 }
 
-
-header, main, footer {
+/* === Layout Containers === */
+header,
+main,
+footer {
   padding: 1rem;
   margin: 0 auto;
 }
@@ -50,6 +60,7 @@ header {
   text-align: center;
 }
 
+/* === Header Branding === */
 .header-container {
   display: flex;
   flex-direction: column;
@@ -66,9 +77,9 @@ header {
 }
 
 .title img {
-  border-radius: 5%;
   width: 150px;
   height: 120px;
+  border-radius: 5%;
 }
 
 .title span {
@@ -77,6 +88,7 @@ header {
   color: var(--white);
 }
 
+/* === Navigation Menu === */
 #menuToggle {
   display: none;
 }
@@ -90,21 +102,17 @@ header {
 
 #navMenu ul {
   display: flex;
+  gap: 2rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 2rem;
-}
-
-#navMenu li {
-  margin: 0;
 }
 
 #navMenu a {
   display: block;
   padding: 1rem 5rem;
-  color: var(--white);
   text-decoration: none;
+  color: var(--white);
   transition: background 0.3s ease;
 }
 
@@ -116,11 +124,11 @@ header {
   color: var(--blue-active);
 }
 
-/* === Desktop Layout for Sections === */
+/* === Main Content Layout === */
 .container {
   display: flex;
   justify-content: space-between;
-  align-items: stretch; /* Equal height */
+  align-items: stretch;
   gap: 2rem;
   margin-top: 1rem;
   padding: 1rem 0;
@@ -152,7 +160,7 @@ section.right img {
   border-radius: 5px;
 }
 
-/* Bottom Course Section */
+/* === Course Section === */
 section.course {
   margin: 0 50px;
   padding: 1rem;
@@ -171,21 +179,21 @@ section.course h2 {
   margin-bottom: 1rem;
 }
 
-/* Filter Buttons */
+/* === Certification Filter Buttons === */
 #certificationFilter {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1.5rem;
   margin: 2rem 0;
-  flex-wrap: wrap;
 }
 
 #certificationFilter a {
+  background-color: var(--secondary-color);
+  color: var(--white);
   text-decoration: none;
   padding: 0.8rem 2rem;
   border-radius: 6px;
-  background-color: var(--secondary-color);
-  color: var(--white);
   font-weight: bold;
   font-size: 1rem;
   transition: background 0.3s ease, transform 0.2s ease;
@@ -201,10 +209,9 @@ section.course h2 {
 
 #certificationFilter a.active {
   background-color: var(--blue-active);
-  color: var(--white);
 }
 
-/* Course Grid */
+/* === Course Grid and Cards === */
 #courseContent {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -214,14 +221,13 @@ section.course h2 {
   border-radius: 8px;
 }
 
-/* Course Cards */
 .course-card {
   background-color: var(--white);
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
@@ -230,24 +236,24 @@ section.course h2 {
 }
 
 .course-card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
   padding: 0.5rem;
   border-radius: 4px;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
 }
 
-/* Status-based heading styling */
+/* === Course Status Colors === */
 .course-card.completed h2 {
   background-color: #28a745; /* Green */
-  color: #fff;
+  color: var(--white);
 }
 
 .course-card.pending h2 {
   background-color: #ffc107; /* Yellow */
-  color: #000;
+  color: #000000;
 }
 
-/* Optional credit summary */
+/* === Credit Summary === */
 #total-credits {
   margin-top: 2rem;
   font-weight: bold;
@@ -257,6 +263,7 @@ section.course h2 {
   text-align: center;
 }
 
+/* === Footer === */
 footer {
   background-color: var(--primary-color);
   color: var(--white);
@@ -264,9 +271,10 @@ footer {
   padding: 1rem;
   font-size: 0.9rem;
 }
+
 footer img.footer-flag {
-  width: 20px;  /* Adjust the size of the image */
+  width: 20px;
   height: auto;
-  vertical-align: middle; /* Align the image vertically with the text */
-  margin-left: 8px; /* Add some space between the text and the image */
+  vertical-align: middle;
+  margin-left: 8px;
 }
