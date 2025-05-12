@@ -96,10 +96,6 @@ header {
   outline: none; /* Remove default outline to customize */
 }
 
-#navMenu a:focus {
-  outline: 3px solid var(--blue-active); /* Clear focus outline for accessibility */
-}
-
 #navMenu a:hover,
 #navMenu a:focus {
   background-color: var(--blue-hover);
@@ -109,10 +105,6 @@ header {
 #navMenu a.active {
   background-color: var(--blue-active);
   color: var(--white);
-}
-
-#navMenu a.active:hover {
-  background-color: var(--blue-active-hover);
 }
 
 section {
