@@ -24,9 +24,19 @@ body {
 
 h1, h2 {
   font-family: 'Domine', serif;
+  text-align: center;
   margin-bottom: 0.5em;
-  color: var(--high-contrast-text); /* Enhanced contrast for headings */
+  padding: 0.5rem;
+  color: var(--high-contrast-text);
+  border-radius: 5px;
+  background-color: transparent; /* Removed forced color */
 }
+
+.section-title {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
 
 header, main, footer {
   padding: 1rem;
@@ -36,8 +46,8 @@ header, main, footer {
 header {
   background-color: var(--primary-color);
   color: var(--white);
-  text-align: center;
   height: 120px;
+  text-align: center;
 }
 
 .header-container {
@@ -68,92 +78,183 @@ header {
 }
 
 #menuToggle {
-  background: none;
-  border: none;
-  color: var(--white);
-  font-size: 1.2rem;
-  cursor: pointer;
-  margin-bottom: 0.5rem;
-  display: block;
+  display: none;
 }
 
 #navMenu {
-  display: none;
-  flex-direction: column;
+  display: flex;
+  justify-content: space-around;
   background-color: var(--black);
   width: 100%;
 }
 
-#navMenu.open {
+#navMenu ul {
   display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+#navMenu li {
+  margin: 0;
 }
 
 #navMenu a {
+  display: block;
+  padding: 1rem 5rem;
   color: var(--white);
-  padding: 0.75rem 1rem;
   text-decoration: none;
   transition: background 0.3s ease;
-  outline: none; /* Remove default outline to customize */
 }
 
-#navMenu a:hover,
-#navMenu a:focus {
-  background-color: var(--blue-hover);
-  color: var(--black);
+#navMenu a:hover {
+  color: var(--blue-hover);
 }
 
 #navMenu a.active {
-  background-color: var(--blue-active);
-  color: var(--white);
+  color: var(--blue-active);
 }
 
-section {
+/* === Desktop Layout for Sections === */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* Equal height */
+  gap: 2rem;
+  margin-top: 1rem;
+  padding: 1rem 0;
+}
+
+.container > section {
+  background-color: var(--white);
   padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+section.left {
+  flex: 0 0 65%;
+  margin-left: 50px;
+}
+
+section.right {
+  flex: 0 0 25%;
+  margin-right: 50px;
+}
+
+section.right img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Bottom Course Section */
+section.course {
+  margin: 0 50px;
+  padding: 1rem;
+  background-color: var(--white);
+  border-radius: 8px;
+  max-width: 90%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+section.course h2 {
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 4px;
   margin-bottom: 1rem;
 }
 
-.container {
-  padding: 1rem;
-}
-
-.place img {
-  width: 100%;
-  height: auto;
+/* Filter Buttons */
+#certificationFilter {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
 }
 
 #certificationFilter a {
   text-decoration: none;
-  padding: 5px 10px;
-  border: 1px solid #444;
-  border-radius: 5px;
-  margin-right: 10px;
-  color: #111;
-  background-color: #eaeaea;
-}
-
-#certificationFilter a:focus {
-  outline: 3px solid var(--blue-active); /* Clear focus outline */
+  padding: 0.8rem 2rem;
+  border-radius: 6px;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  min-width: 100px;
+  text-align: center;
 }
 
 #certificationFilter a:hover {
-  background-color: #2a2aa5;
+  background-color: var(--blue-active-hover);
+  transform: translateY(-2px);
+}
+
+#certificationFilter a.active {
+  background-color: var(--blue-active);
   color: var(--white);
 }
 
+/* Course Grid */
+#courseContent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 1rem;
+  background-color: var(--neutral-background);
+  border-radius: 8px;
+}
+
+/* Course Cards */
 .course-card {
+  background-color: var(--white);
   border: 1px solid #ccc;
-  padding: 15px;
-  margin-bottom: 10px;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+  transform: scale(1.05);
+}
+
+.course-card h2 {
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Status-based heading styling */
+.course-card.completed h2 {
+  background-color: #28a745; /* Green */
+  color: #fff;
+}
+
+.course-card.pending h2 {
+  background-color: #ffc107; /* Yellow */
+  color: #000;
+}
+
+/* Optional credit summary */
+#total-credits {
+  margin-top: 2rem;
+  font-weight: bold;
+  background-color: #eef;
+  padding: 1rem;
   border-radius: 5px;
-  color: var(--text-color);
-}
-
-.course-card.completed {
-  background-color: var(--highlight-color);
-}
-
-.course-card.pending {
-  background-color: var(--warning-color);
+  text-align: center;
 }
 
 footer {
@@ -163,16 +264,3 @@ footer {
   padding: 1rem;
   font-size: 0.9rem;
 }
-
-@media (max-width: 320px) {
-  #navMenu ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .title {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-
