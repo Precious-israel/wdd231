@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Israel Ojo - Course Home Page</title>
   <meta name="description"
-    content="This page is designed to serve as home page foe a web page on chamber of Commerce in the where I reside being a centre of Economic hub itself.">
-  <meta name="author" content="Israel OJO">
-  <link rel="stylesheet" href="styles/small.css">
-  <link rel="stylesheet" href="styles/larger.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Roboto:wght@100..900&display=swap"
-    rel="stylesheet">
-  <script src="scripts/navigation.js" defer></script>
-  <script src="scripts/dates.js" defer></script>
+    content="This page is designed to serve as home page for a web page on Chamber of Commerce in the city where I reside, being a centre of economic hub itself." />
+  <meta name="author" content="Israel OJO" />
+  <link rel="stylesheet" href="styles/small.css" />
+  <link rel="stylesheet" href="styles/larger.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Roboto:wght@100..900&display=swap"
+    rel="stylesheet" />
   <script src="scripts/course.js" defer></script>
+  <script src="scripts/dates.js" defer></script>
+  <script src="scripts/navigation.js" defer></script>
 </head>
 
 <body>
   <header>
     <div class="header-container">
-      <button id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+      <button id="menuToggle" aria-label="Toggle navigation">☰</button>
       <div class="title">
-        <img src="images/profile.jpg" alt="Israel Ojo" width="200">
+        <img src="images/profile.jpg" alt="Israel Ojo" width="120" />
         <span>Israel Ojo</span>
       </div>
-
-      <nav id="navMenu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="chamber.html">Chamber</a></li>
-          <li><a href="final.html">Final</a></li>
-          <li><a href="https://github.com/precious-israel" target="_blank" rel="noopener">GitHub Profile</a></li>
-          <li><a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a></li>
-        </ul>
-      </nav>
     </div>
   </header>
+
+  <nav id="navMenu">
+    <ul>
+      <a href="/" class="active">Home</a>
+      <a href="chamber.html">Chamber</a>
+      <a href="final.html">Final</a>
+      <a href="https://github.com/precious-israel" target="_blank" rel="noopener">GitHub Profile</a>
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
+    </ul>
+  </nav>
 
   <main>
     <h1>Home</h1>
     <div class="container">
-      <section>
+      <section class="left">
         <h2>Course Work</h2>
         <ul>
           <li>HTML, CSS, and JavaScript fundamentals</li>
@@ -54,27 +54,27 @@
         </ul>
       </section>
 
-      <section class="place">
+      <section class="right">
         <h2>Lagos, Nigeria</h2>
-        <img src="images/lagos.png" alt="Lagos, Nigeria">
+        <img src="images/lagos.png" alt="Lagos, Nigeria" />
       </section>
     </div>
 
     <section class="course">
-      <h2>Web and Computing Programming</h2>
-      <div id="certificationFilter">
-        <!-- Filter buttons will go here -->
+      <h2>Web and Computer Programming</h2>
+      <div id="certificationFilter" class="filters">
+        <!-- Filter buttons go here (All, CSE, WDD) -->
       </div>
 
-      <div id="courseContent"></div> <!-- Dynamic content will be inserted here -->
+      <div id="courseContent" class="course-grid">
+        <!-- Course cards will be dynamically inserted here -->
+      </div>
     </section>
   </main>
-
 
   <footer>
     <p>© <span id="currentYear"></span> | OJO Israel | Lagos, Nigeria.</p>
     <p class="modified"><span id="lastModified"></span></p>
   </footer>
 </body>
-
 </html>

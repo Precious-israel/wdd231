@@ -62,6 +62,7 @@ const courses = [
 ];
 
 const certificateSection = document.getElementById("courseContent");
+
 const certificationFilter = document.getElementById("certificationFilter");
 
 const subjects = ['All', 'CSE', 'WDD'];
@@ -71,20 +72,33 @@ subjects.forEach(subject => {
     const link = document.createElement("a");
     link.href = "#";
     link.textContent = subject;
+
     link.addEventListener("click", (e) => {
         e.preventDefault();
-        const filtered = subject === "All" ? courses : courses.filter(c => c.subject === subject);
+
+        const filtered = subject === "All"
+            ? courses
+            : courses.filter(c => c.subject === subject);
+
         displayCourses(filtered);
     });
+
     certificationFilter.appendChild(link);
 });
 
 function displayCourses(courseList) {
     certificateSection.innerHTML = "";
 
+    if (courseList.length === 0) {
+        certificateSection.innerHTML = "<p>No courses found for the selected filter.</p>";
+        return;
+    }
+
     courseList.forEach(course => {
         const courseCard = document.createElement("div");
+
         courseCard.className = `course-card ${course.completed ? "completed" : "pending"}`;
+
         courseCard.innerHTML = `
             <h2>${course.title}</h2>
             <p><strong>Category:</strong> ${course.subject}</p>
@@ -92,6 +106,7 @@ function displayCourses(courseList) {
             <p><strong>Technologies:</strong> ${course.technology.join(", ")}</p>
             <p><strong>Status:</strong> ${course.completed ? "✅ Completed" : "⏳ In Progress"}</p>
         `;
+
         certificateSection.appendChild(courseCard);
     });
 
@@ -100,10 +115,16 @@ function displayCourses(courseList) {
 
 function updateTotalCredits(courseList) {
     let totalCredits = courseList.reduce((sum, course) => sum + course.credits, 0);
-    const totalDiv = document.createElement("div");
-    totalDiv.id = "total-credits";
+
+    let totalDiv = document.getElementById("total-credits");
+
+    if (!totalDiv) {
+        totalDiv = document.createElement("div");
+        totalDiv.id = "total-credits";
+        certificateSection.appendChild(totalDiv);
+    }
+
     totalDiv.innerHTML = `<strong>Total Credits:</strong> ${totalCredits}`;
-    certificateSection.appendChild(totalDiv);
 }
 
 // Initial display

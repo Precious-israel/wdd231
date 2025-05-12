@@ -1,31 +1,34 @@
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 321px) {
   header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   }
 
   #menuToggle {
     display: none;
   }
-
-  nav ul {
+#navMenu {
     display: flex !important;
     flex-direction: row;
-    gap: 1rem;
-    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+   
   }
 
-  nav ul li {
-    margin: 0;
+  #navMenu a {
+    padding: 6rem;
+    border: none;
+    
   }
-
-  main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+ #navMenu a.active {
+    background-color: #007bff; /* Active link style */
   }
-
+#navMenu a:hover {
+    background-color: #66b2ff;
+}
   section.course {
     grid-column: span 2;
   }
