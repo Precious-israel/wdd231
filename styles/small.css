@@ -264,3 +264,9 @@ footer {
   padding: 1rem;
   font-size: 0.9rem;
 }
+footer img.footer-flag {
+  width: 20px;  /* Adjust the size of the image */
+  height: auto;
+  vertical-align: middle; /* Align the image vertically with the text */
+  margin-left: 8px; /* Add some space between the text and the image */
+}
