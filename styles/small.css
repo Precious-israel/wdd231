@@ -244,7 +244,7 @@ section.course h2 {
 
 /* === Course Status Colors === */
 .course-card.completed h2 {
-  background-color: #28a745; /* Green */
+  background-color: hwb(208 1% 94%); /* Black*/
   color: var(--white);
 }
 

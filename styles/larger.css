@@ -8,6 +8,8 @@
     align-items: center;
     padding: 0 15px;
     position: relative;
+    background-color: var(--black); /* Ensures quick background paint */
+    contain: layout style; /* Performance hint */
   }
 
   #menuToggle {
@@ -20,7 +22,13 @@
     border: none;
     color: var(--white);
     cursor: pointer;
-    z-index: 10;
+    z-index: 100;
+    touch-action: manipulation; /* Prevents 300ms delay */
+  }
+
+  #menuToggle:focus {
+    outline: 2px solid var(--white);
+    outline-offset: 2px;
   }
 
   .title {
@@ -28,18 +36,20 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    flex-direction: row; /* Image and text side by side */
+    flex-direction: row;
   }
 
   .title img {
-    width: 50px; /* Smaller image for mobile */
+    width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 10%;
+    object-fit: cover; /* Prevents layout shift */
   }
 
   .title span {
     font-size: 1.2rem;
     color: var(--white);
+    font-weight: 600;
   }
 
   /* Navigation menu */
@@ -48,18 +58,23 @@
     flex-direction: column;
     background-color: var(--black);
     width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out; /* Prevents expensive paint */
   }
 
   #navMenu.open {
     display: flex;
+    max-height: 500px;
   }
 
   #navMenu ul {
-    flex-direction: column;
     list-style: none;
     padding: 0;
     margin: 0;
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   #navMenu li {
@@ -73,28 +88,36 @@
     color: var(--white);
     text-decoration: none;
     background-color: var(--black);
-    transition: background 0.3s ease;
+    transition: background-color 0.2s ease-in;
+    font-size: 1rem;
   }
 
-  #navMenu a:hover {
+  #navMenu a:hover,
+  #navMenu a:focus {
     background-color: var(--blue-active-hover);
+    outline: none;
   }
 
-  /* Section container (stack sections vertically) */
+  /* Section container */
   .container {
-    flex-direction: column; /* Stacking sections vertically */
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
     margin: 1rem;
     padding: 1rem;
+    contain: layout paint; /* Hint for rendering performance */
   }
 
   .container > section {
-    width: 100%; /* Full width for mobile */
+    width: 100%;
     margin: 0;
     padding: 1rem;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Light shadow for performance */
   }
 
-  /* Course section layout (make it full width) */
+  /* Course section layout */
   section.course {
     margin: 1rem 0;
     padding: 1rem;
@@ -102,12 +125,12 @@
 
   #courseContent {
     display: grid;
-    grid-template-columns: 1fr; /* One column for mobile */
+    grid-template-columns: 1fr;
     gap: 1rem;
-    padding: 1rem;
+    padding: 1rem 0;
   }
 
-  /* Filter buttons layout on mobile */
+  /* Filter buttons */
   #certificationFilter {
     display: flex;
     flex-direction: column;
@@ -117,24 +140,31 @@
   }
 
   #certificationFilter a {
-    width: 80%; /* Buttons take most of the width */
-    padding: 0.8rem;
+    width: 90%;
+    padding: 0.9rem;
     text-align: center;
     background-color: var(--secondary-color);
     color: var(--white);
-    font-weight: bold;
+    font-weight: 600;
     border-radius: 6px;
-    transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in;
+    touch-action: manipulation;
   }
 
-  #certificationFilter a:hover {
+  #certificationFilter a:hover,
+  #certificationFilter a:focus {
     background-color: var(--blue-active-hover);
+    outline: none;
   }
 
-  /* Header font size adjustments */
+  /* Headings */
   h1, h2 {
     font-size: 1.2rem;
     text-align: center;
     margin: 1rem 0;
+    line-height: 1.4;
   }
 }
+

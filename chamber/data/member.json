@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Osogbo Fresh Market",
+    "address": "12 Oke-Fia Road, Osogbo, Osun State",
+    "phone": "0803-123-4567",
+    "website": "https://osogbofresh.ng",
+    "image": "freshmarket.png",
+    "membership": 3
+  },
+  {
+    "name": "Ife AgroTech Ltd",
+    "address": "23 Obafemi Awolowo Way, Ile-Ife, Osun State",
+    "phone": "0802-567-8910",
+    "website": "https://ifeagrotech.com",
+    "image": "agrotech.png",
+    "membership": 2
+  },
+  {
+    "name": "TechBridge Osun",
+    "address": "Tech Hub, Ring Road, Osogbo, Osun State",
+    "phone": "0701-222-3344",
+    "website": "https://techbridgeosun.ng",
+    "image": "techbridge.png",
+    "membership": 3
+  },
+  {
+    "name": "Erin Ijesha Resort",
+    "address": "Erin Ijesha Waterfall Road, Oriade, Osun State",
+    "phone": "0815-678-9012",
+    "website": "https://erinresort.com",
+    "image": "resort.png",
+    "membership": 2
+  },
+  {
+    "name": "Osun Fashion House",
+    "address": "10 Gbongan Road, Osogbo, Osun State",
+    "phone": "0809-876-5432",
+    "website": "https://osunfashion.ng",
+    "image": "fashion.png",
+    "membership": 1
+  },
+  {
+    "name": "Ilesa Tech Repairs",
+    "address": "45 Oke-Omiru Street, Ilesa, Osun State",
+    "phone": "0901-234-5678",
+    "website": "https://ilesatechfix.ng",
+    "image": "techrepair.png",
+    "membership": 2
+  },
+  {
+    "name": "OAU Books & Stationery",
+    "address": "OAU Campus, Ile-Ife, Osun State",
+    "phone": "0802-333-7788",
+    "website": "https://oaubooks.com",
+    "image": "books.png",
+    "membership": 3
+  },
+  {
+    "name": "Osun Honey Farms",
+    "address": "Km 5, Iwo Road, Osogbo, Osun State",
+    "phone": "0812-345-6789",
+    "website": "https://osunhoney.ng",
+    "image": "honey.png",
+    "membership": 2
+  }
+]

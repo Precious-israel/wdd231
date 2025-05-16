@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Directory of Chamber of Commerce members - find businesses and organizations near you." />
+  <meta name="author" content="Israel Ojo" />
+  <title>Chamber Directory</title>
+  <link rel="stylesheet" href="styles/bass.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Roboto:wght@100..900&display=swap"
+    rel="stylesheet">
+
+  <meta property="og:title" content="Chamber Member Directory" />
+  <meta property="og:description" content="Explore local businesses and organizations in our Chamber of Commerce." />
+  <meta property="og:image" content="images/social-share.jpg" />
+  <meta property="og:url" content="https://yourchambersite.com/directory.html" />
+  <script src="scripts/scripts.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <img src="logo.png" alt="Chamber Logo" class="logo" />
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Directory</a></li>
+        <li><a href="#">Join</a></li>
+        <li><a href="#">Discover</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <img src="banner.jpg" alt="Banner" class="banner" />
+    <h1>Home</h1>
+    <section class="view-buttons">
+      <button id="grid-view">Grid View</button>
+      <button id="list-view">List View</button>
+    </section>
+
+    <section id="member-directory" class="grid-view">
+      <!-- JavaScript will populate this section with member cards -->
+    </section>
+
+  </main>
+  <footer>
+    <p>Contact us at: contact@yourchambersite.com | 123 Main St, Your Town</p>
+    <p>Developed by Your Full Name | WDD 231</p>
+    <p>&copy; <span id="year"></span> | Last Modified: <span id="lastModified"></span></p>
+  </footer>
+</body>
+
+</html>
