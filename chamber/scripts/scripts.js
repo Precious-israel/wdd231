@@ -75,22 +75,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function displayMembers(members) {
-    if (!container) return;
-    container.innerHTML = "";
+  if (!container) return;
+  container.innerHTML = "";
 
-    members.forEach((member) => {
-      const card = document.createElement("section");
-      card.innerHTML = `
-        <img src="${member.image}" alt="${member.name} logo" loading="lazy" />
+  members.forEach((member) => {
+    const card = document.createElement("section");
+    card.innerHTML = `
+     
+      <div class="member-info">
         <h2>${member.name}</h2>
-        <p>${member.address}</p>
-        <p>${member.phone}</p>
-        <a href="${member.website}" target="_blank" rel="noopener noreferrer">Visit Website</a>
-        <p>Membership: ${["Member", "Silver", "Gold"][member.membership - 1]}</p>
-      `;
-      container.appendChild(card);
-    });
-  }
+         <img src="${member.image}" alt="${member.name} logo" loading="lazy" />
+        <p><strong>Email:</strong> ${member.email}</p>
+        <p><strong>Phone:</strong> ${member.phone}</p>
+        <p><strong>Website:</strong> <a href="${member.website}" target="_blank" rel="noopener noreferrer">Visit Website</a></p>
+        <p><strong>Membership:</strong> ${["Member", "Silver", "Gold"][member.membership - 1]}</p>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
 
   // ========== VIEW TOGGLE ==========
   const gridViewBtn = document.getElementById("grid-view");

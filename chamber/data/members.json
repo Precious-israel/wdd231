@@ -1,66 +1,66 @@
 [
   {
     "name": "Osogbo Fresh Market",
-    "address": "12 Oke-Fia Road, Osogbo, Osun State",
+    "email": "enquiry@osogbofresh.ng",
     "phone": "0803-123-4567",
     "website": "https://osogbofresh.ng",
-    "image": "freshmarket.png",
+    "image": "images/market.png",
     "membership": 3
   },
   {
     "name": "Ife AgroTech Ltd",
-    "address": "23 Obafemi Awolowo Way, Ile-Ife, Osun State",
+    "email": "enquiry@ifeagrotech.com",
     "phone": "0802-567-8910",
     "website": "https://ifeagrotech.com",
-    "image": "agrotech.png",
+    "image": "images/ife.png",
     "membership": 2
   },
   {
     "name": "TechBridge Osun",
-    "address": "Tech Hub, Ring Road, Osogbo, Osun State",
+    "email": "enquiry@techbridge.ng",
     "phone": "0701-222-3344",
     "website": "https://techbridgeosun.ng",
-    "image": "techbridge.png",
+    "image": "images/bridge.png",
     "membership": 3
   },
   {
     "name": "Erin Ijesha Resort",
-    "address": "Erin Ijesha Waterfall Road, Oriade, Osun State",
+    "email": "enquiry@erinresort.com",
     "phone": "0815-678-9012",
     "website": "https://erinresort.com",
-    "image": "resort.png",
+    "image": "images/ijesha.png",
     "membership": 2
   },
   {
     "name": "Osun Fashion House",
-    "address": "10 Gbongan Road, Osogbo, Osun State",
+    "email": "enquiry@osunfashion.ng",
     "phone": "0809-876-5432",
     "website": "https://osunfashion.ng",
-    "image": "fashion.png",
+    "image": "images/osun.png",
     "membership": 1
   },
   {
     "name": "Ilesa Tech Repairs",
-    "address": "45 Oke-Omiru Street, Ilesa, Osun State",
+    "email":  "enquiry@ilesatechfix.ng",
     "phone": "0901-234-5678",
     "website": "https://ilesatechfix.ng",
-    "image": "techrepair.png",
+    "image": "images/ilesha.jpg",
     "membership": 2
   },
   {
     "name": "OAU Books & Stationery",
-    "address": "OAU Campus, Ile-Ife, Osun State",
+    "email": "enquiry@oaubooks.com",
     "phone": "0802-333-7788",
     "website": "https://oaubooks.com",
-    "image": "books.png",
+    "image": "images/oau.jpg",
     "membership": 3
   },
   {
     "name": "Osun Honey Farms",
-    "address": "Km 5, Iwo Road, Osogbo, Osun State",
+    "email": "enquiry@osunhoney.ng",
     "phone": "0812-345-6789",
     "website": "https://osunhoney.ng",
-    "image": "honey.png",
+    "image": "images/honey.jpg",
     "membership": 2
   }
 ]
