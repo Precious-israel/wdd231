@@ -5,17 +5,48 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   line-height: 1.6;
 }
 
-header nav {
+header {
+  margin-bottom: 0;
+  
+}
+
+nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding-left: 5%;
+  padding-right: 5%;
   background: #024;
   color: #fff;
+  position: relative;
+}
+
+/* Logo and text container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.1;
+}
+
+.logo-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo-subtitle {
+  font-size: 0.875rem;
+  font-weight: normal;
 }
 
 nav .logo {
@@ -25,20 +56,60 @@ nav .logo {
 .nav-links {
   display: flex;
   gap: 1rem;
+  list-style: none;
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
+  padding: 0.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
 }
 
+/* Hover effect on nav links */
+.nav-links a:hover,
+.nav-links a:focus {
+  color: #ef9413; /* Your highlight color */
+  transform: scale(1.1);
+  text-shadow: 0 0 5px rgba(239,148,19, 0.7);
+}
+
+/* Wayfinding: highlight current page */
+.nav-links a.active {
+  border-bottom: 2px solid #fff;
+  font-weight: bold;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Banner image */
 .banner {
   display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 1rem auto;
+  width: 90%;
+  height: 400px;
+  object-fit: cover;
+  margin: 0 auto;
 }
 
+/* Home Section */
+.home {
+  width: 90%;
+  margin: 5px auto; /* centers the div horizontally */
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+
+/* View buttons */
 .view-buttons {
   text-align: center;
   margin: 1rem;
@@ -58,21 +129,22 @@ nav .logo {
   background: #046;
 }
 
-#memberContainer.grid {
+/* Member directory styles */
+#member-directory.grid-view {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
   padding: 1rem;
 }
 
-#memberContainer.list {
+#member-directory.list-view {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
 }
 
-#memberContainer section {
+#member-directory section {
   border: 1px solid #ccc;
   padding: 1rem;
   background: #f9f9f9;
@@ -80,16 +152,17 @@ nav .logo {
   transition: background-color 0.3s ease;
 }
 
-#memberContainer section:hover {
+#member-directory section:hover {
   background-color: #eef;
 }
 
-#memberContainer img {
+#member-directory img {
   max-width: 100px;
   height: auto;
   margin-bottom: 0.5rem;
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 1rem;
@@ -98,3 +171,73 @@ footer {
   margin-top: 2rem;
 }
 
+/* Responsive nav menu */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #024;
+    width: 100%;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    border-top: 1px solid #046;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+/* ========== ANIMATIONS ========== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.8s forwards;
+}
+
+.animate-slide-out {
+  animation: slideOut 0.8s forwards;
+}
