@@ -1,3 +1,4 @@
+/* Reset and Base Styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,9 +10,9 @@ body {
   line-height: 1.6;
 }
 
+/* Header and Navigation */
 header {
   margin-bottom: 0;
-  
 }
 
 nav {
@@ -25,7 +26,7 @@ nav {
   position: relative;
 }
 
-/* Logo and text container */
+/* Logo and Text Container */
 .logo-container {
   display: flex;
   align-items: center;
@@ -53,6 +54,7 @@ nav .logo {
   height: 50px;
 }
 
+/* Navigation Links */
 .nav-links {
   display: flex;
   gap: 1rem;
@@ -67,21 +69,20 @@ nav .logo {
   cursor: pointer;
 }
 
-/* Hover effect on nav links */
+/* Hover and Active States */
 .nav-links a:hover,
 .nav-links a:focus {
-  color: #ef9413; /* Your highlight color */
+  color: #ef9413;
   transform: scale(1.1);
   text-shadow: 0 0 5px rgba(239,148,19, 0.7);
 }
 
-/* Wayfinding: highlight current page */
 .nav-links a.active {
   border-bottom: 2px solid #fff;
   font-weight: bold;
 }
 
-/* Hamburger button */
+/* Hamburger Button */
 .hamburger {
   display: none;
   font-size: 1.5rem;
@@ -91,7 +92,7 @@ nav .logo {
   cursor: pointer;
 }
 
-/* Banner image */
+/* Banner Image */
 .banner {
   display: block;
   width: 90%;
@@ -100,17 +101,15 @@ nav .logo {
   margin: 0 auto;
 }
 
-
 /* Home Section */
 .home {
   width: 90%;
-  margin: 5px auto; /* centers the div horizontally */
+  margin: 5px auto;
   padding-left: 1%;
   padding-right: 1%;
 }
 
-
-/* View buttons */
+/* View Buttons */
 .view-buttons {
   text-align: center;
   margin: 1rem;
@@ -130,7 +129,7 @@ nav .logo {
   background: #046;
 }
 
-/* Member directory styles */
+/* Member Directory Styles */
 #member-directory.grid-view {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -145,22 +144,64 @@ nav .logo {
   padding: 1rem;
 }
 
+/* Member Card Styles */
 #member-directory section {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
   border: 1px solid #ccc;
   padding: 1rem;
   background: #f9f9f9;
-  text-align: center;
+  text-align: left;
   transition: background-color 0.3s ease;
+  flex-wrap: wrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 
 #member-directory section:hover {
   background-color: #eef;
 }
 
+/* Member Image */
 #member-directory img {
-  max-width: 100px;
-  height: auto;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+/* Hide Images in List View */
+#member-directory.list-view img {
+  display: none;
+}
+
+/* Member Information */
+.member-info {
+  flex: 1 1 200px;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.member-info h2 {
   margin-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.25rem;
+  font-size: 1.25rem;
+}
+
+.member-info p {
+  margin: 0.25rem 0;
+  line-height: 1.4;
+}
+
+.member-info a {
+  word-break: break-word;
+  color: #024;
+  text-decoration: underline;
 }
 
 /* Footer */
@@ -194,7 +235,7 @@ footer {
 .footer-center img {
   width: 30px;
   height: 30px;
-  filter: brightness(0) invert(1); /* Makes icons white */
+  filter: brightness(0) invert(1);
   transition: transform 0.3s;
 }
 
@@ -214,11 +255,7 @@ footer {
   padding-left: 15%;
 }
 
-/* @media (max-width: 600px) {
- 
-} */
-
-/* Responsive nav menu */
+/* Responsive Navigation */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -245,7 +282,7 @@ footer {
     padding: 1rem;
   }
 
-   .footer-content {
+  .footer-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -268,8 +305,7 @@ footer {
   }
 }
 
-/* ========== ANIMATIONS ========== */
-
+/* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -310,101 +346,3 @@ footer {
 .animate-slide-out {
   animation: slideOut 0.8s forwards;
 }
-
-
-/*Card*/
-#member-directory section {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  background: #f9f9f9;
-  text-align: left;
-  transition: background-color 0.3s ease;
-  flex-wrap: wrap; /* Allow wrapping if needed */
-  overflow: hidden;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-
-#member-directory img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 5px;
-  flex-shrink: 0;
-}
-
-.member-info {
-  flex: 1 1 200px;
-  min-width: 0;
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
-.member-info h2 {
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 0.25rem;
-  font-size: 1.25rem;
-}
-
-.member-info p {
-  margin: 0.25rem 0;
-  line-height: 1.4;
-}
-
-.member-info a {
-  word-break: break-word;
-  color: #024;
-  text-decoration: underline;
-}
-#member-directory section {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  background: #f9f9f9;
-  text-align: left;
-  transition: background-color 0.3s ease;
-  flex-wrap: wrap; /* Allow wrapping if needed */
-  overflow: hidden;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-
-#member-directory img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 5px;
-  flex-shrink: 0;
-}
-
-.member-info {
-  flex: 1 1 200px;
-  min-width: 0;
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
-.member-info h2 {
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 0.25rem;
-  font-size: 1.25rem;
-}
-
-.member-info p {
-  margin: 0.25rem 0;
-  line-height: 1.4;
-}
-
-.member-info a {
-  word-break: break-word;
-  color: #024;
-  text-decoration: underline;
-}
-
