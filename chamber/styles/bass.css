@@ -538,14 +538,39 @@ input, select, textarea {
     box-sizing: border-box;
 }
 
-button {
-    padding: 10px 15px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+/* Red left border when required input is invalid */
+input:required:invalid {
+    border-left: 8px solid red;
 }
+
+/* Green left border when required input is valid */
+input:required:valid {
+    border-left: 8px solid green;
+}
+
+
+/* Basic styling for submit button */
+
+button[type="submit"] {
+    background-color: #F5F5F5; /* Very light gray */
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Hover effect */
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Active effect (when button is clicked) */
+button[type="submit"]:active {
+    background-color: #004080;
+}
+
 
 .cards {
     flex: 1 1 250px;
@@ -567,6 +592,10 @@ button {
 .card:hover {
     transform: translateY(-5px);
 }
+header + .cards {
+    margin-top: 30px;
+}
+
 
 .modal {
     display: none;
