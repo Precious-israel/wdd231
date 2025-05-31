@@ -218,3 +218,79 @@ function shuffle(array) {
 function getMembershipLevel(num) {
   return num === 3 ? "Gold" : num === 2 ? "Silver" : "Member";
 }
+// Combined window.onload logic
+window.onload = () => {
+    // 1. Auto-fill the timestamp in the hidden input (if exists)
+    const timestampField = document.getElementById('timestamp');
+    if (timestampField) {
+        const now = new Date();
+        timestampField.value = now.toISOString();
+    }
+
+    // 2. Display form data from query parameters (if present)
+    displayFormData();
+};
+
+// Modal functionality
+function showModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.style.display = 'flex';
+    }
+}
+
+function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Close modal on click outside
+window.addEventListener('click', function (e) {
+    document.querySelectorAll('.modal').forEach(modal => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+});
+
+// Get form data from URL parameters
+function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+        firstName: params.get('firstName') || '',
+        lastName: params.get('lastName') || '',
+        email: params.get('email') || '',
+        phone: params.get('phone') || '',
+        organization: params.get('organization') || '',
+        timestamp: params.get('timestamp') || ''
+    };
+}
+
+// Display the form data
+function displayFormData() {
+    const data = getQueryParams();
+    const displayDiv = document.getElementById('formDataDisplay');
+
+    // Only format timestamp if it's valid
+    let formattedTimestamp = 'Not provided';
+    if (data.timestamp) {
+        const date = new Date(data.timestamp);
+        if (!isNaN(date)) {
+            formattedTimestamp = date.toLocaleString();
+        }
+    }
+
+    if (displayDiv) {
+        displayDiv.innerHTML = `
+            <p><strong>First Name:</strong> ${data.firstName}</p>
+            <p><strong>Last Name:</strong> ${data.lastName}</p>
+            <p><strong>Email:</strong> ${data.email}</p>
+            <p><strong>Mobile Number:</strong> ${data.phone}</p>
+            <p><strong>Organization Name:</strong> ${data.organization}</p>
+            <p><strong>Timestamp:</strong> ${formattedTimestamp}</p>
+        `;
+    }
+}
+

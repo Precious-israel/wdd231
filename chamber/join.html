@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Directory of Chamber of Commerce members – find businesses and organizations near you." />
+    <meta name="author" content="Israel Ojo" />
+    <meta name="theme-color" content="#2a2a2a" />
+
+    <title>Obokun Chamber of Commerce Directory</title>
+
+    <link rel="stylesheet" href="styles/bass.css" />
+    <link rel="icon" href="favicon.ico" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Roboto:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Directory" />
+    <meta property="og:description"
+        content="Explore local businesses and organizations in our Chamber of Commerce. This is an economic hub for CEOs and budding business professionals within Osogbo and its environs." />
+    <meta property="og:image" content="images/chamber-icon.png" />
+    <meta property="og:url" content="https://oshogo-chamber.org/directory.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Obokun Chamber Directory" />
+
+    <!-- JavaScript -->
+    <script src="scripts/scripts.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="images/icon.png" alt="Chamber Logo" class="logo" />
+                <div class="logo-text">
+                    <span class="logo-title">Obokun</span>
+                    <span class="logo-subtitle">Chamber of Commerce</span>
+                </div>
+            </div>
+
+            <!-- Hamburger Icon for Mobile -->
+            <button class="hamburger" id="hamburger">&#9776;</button>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="directory.html">Directory</a></li>
+                <li><a href="join.html">Join</a></li>
+                <li><a href="discover.html">Discover</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+       <main class="container">
+        <form method="get" action="thankyou.html" id="membershipForm">
+            <label>First Name*:
+                <input type="text" name="firstName" required autocomplete="given-name" title="Enter your first name">
+            </label>
+
+            <label>Last Name*:
+                <input type="text" name="lastName" required autocomplete="family-name" title="Enter your last name">
+            </label>
+
+            <label>Organizational Title:
+                <input type="text" name="organization-title" pattern="[A-Za-z\s\-]{7,}" autocomplete="organization-title"
+                    title="Enter your title within the organization (at least 7 characters, letters, hyphens, and spaces only)">
+            </label>
+
+            <label>Email*:
+                <input type="email" name="email" required autocomplete="email" placeholder="example@domain.com">
+            </label>
+
+            <label>Mobile Number*:
+                <input type="tel" name="phone" required autocomplete="tel">
+            </label>
+
+            <label>Organization Name*:
+                <input type="text" name="organization" required autocomplete="organization">
+            </label>
+
+            <label>Membership Level:
+                <select name="membership">
+                    <option value="np">NP Membership (Non-Profit)</option>
+                    <option value="bronze">Bronze Membership</option>
+                    <option value="silver">Silver Membership</option>
+                    <option value="gold">Gold Membership</option>
+                </select>
+            </label>
+
+            <label>Organization Description:
+                <textarea name="description" title="Describe your organization"></textarea>
+            </label>
+
+            <input type="hidden" name="timestamp" id="timestamp">
+            <button type="submit">Submit Form</button>
+        </form>
+
+        <section class="cards">
+            <div class="card" id="np-card">
+                <h3>NP Membership</h3>
+                <a href="#" onclick="showModal('modal-np')">View Benefits</a>
+            </div>
+            <div class="card" id="bronze-card">
+                <h3>Bronze Membership</h3>
+                <a href="#" onclick="showModal('modal-bronze')">View Benefits</a>
+            </div>
+            <div class="card" id="silver-card">
+                <h3>Silver Membership</h3>
+                <a href="#" onclick="showModal('modal-silver')">View Benefits</a>
+            </div>
+            <div class="card" id="gold-card">
+                <h3>Gold Membership</h3>
+                <a href="#" onclick="showModal('modal-gold')">View Benefits</a>
+            </div>
+        </section>
+
+        <!-- Modals -->
+        <div id="modal-np" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal-np')">&times;</span>
+                <h2>NP Membership Benefits</h2>
+                <p>Free access to networking events and community listings.</p>
+            </div>
+        </div>
+        <div id="modal-bronze" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal-bronze')">&times;</span>
+                <h2>Bronze Membership Benefits</h2>
+                <p>Includes event discounts, basic promotion, and early access to news.</p>
+            </div>
+        </div>
+        <div id="modal-silver" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal-silver')">&times;</span>
+                <h2>Silver Membership Benefits</h2>
+                <p>Includes all Bronze benefits plus spotlight homepage placement and featured interviews.</p>
+            </div>
+        </div>
+        <div id="modal-gold" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal-gold')">&times;</span>
+                <h2>Gold Membership Benefits</h2>
+                <p>Includes all Silver benefits, exclusive training, and VIP event invitations.</p>
+            </div>
+        </div>
+    </main>
+
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <p><strong>Obokun Chamber of Commerce</strong><br>
+                    57, Okefia Crescent Obokun Osogbo, Nigeria<br>
+                    contact@Osogbochamber.com<br>
+                    +2348038573366
+                </p>
+            </div>
+
+            <div class="footer-center">
+                <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+                    <img src="images/youtube.png" alt="YouTube" />
+                </a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                    <img src="images/x.png" alt="Twitter" />
+                </a>
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                    <img src="images/linkedin.png" alt="LinkedIn" />
+                </a>
+            </div>
+
+            <div class="footer-right">
+                <p>WDD 231 Class Project<br>
+                    Israel Ojo<br>
+                    &copy; Obokun Chamber of Commerce
+                </p>
+                <p><span id="year"></span> | Last Modified: <span id="lastModified"></span></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
