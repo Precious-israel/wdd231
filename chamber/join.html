@@ -56,103 +56,105 @@
             </ul>
         </nav>
     </header>
-    <h1>Application Form</h1>
+
     <main>
-       <main class="container">
-        <form method="get" action="thankyou.html" id="membershipForm">
-            <label>First Name*:
-                <input type="text" name="firstName" required autocomplete="given-name" title="Enter your first name">
-            </label>
+        <h2>Application Form</h2>
+        <div class="container">
+            <form method="get" action="thankyou.html" id="membershipForm">
+                <label>First Name*:
+                    <input type="text" name="firstName" required autocomplete="given-name"
+                        title="Enter your first name">
+                </label>
 
-            <label>Last Name*:
-                <input type="text" name="lastName" required autocomplete="family-name" title="Enter your last name">
-            </label>
+                <label>Last Name*:
+                    <input type="text" name="lastName" required autocomplete="family-name"
+                        title="Enter your last name">
+                </label>
 
-            <label>Organizational Title:
-                <input type="text" name="organization-title" pattern="[A-Za-z\s\-]{7,}" autocomplete="organization-title"
-                    title="Enter your title within the organization (at least 7 characters, letters, hyphens, and spaces only)">
-            </label>
+                <label>Organizational Title:
+                    <input type="text" name="organization-title" pattern="[A-Za-z\s\-]{7,}"
+                        autocomplete="organization-title"
+                        title="Enter your title within the organization (at least 7 characters, letters, hyphens, and spaces only)">
+                </label>
 
-            <label>Email*:
-                <input type="email" name="email" required autocomplete="email" placeholder="example@domain.com">
-            </label>
+                <label>Email*:
+                    <input type="email" name="email" required autocomplete="email" placeholder="example@domain.com">
+                </label>
 
-            <label>Mobile Number*:
-                <input type="tel" name="phone" required autocomplete="tel">
-            </label>
+                <label>Mobile Number*:
+                    <input type="tel" name="phone" required autocomplete="tel">
+                </label>
 
-            <label>Organization Name*:
-                <input type="text" name="organization" required autocomplete="organization">
-            </label>
+                <label>Organization Name*:
+                    <input type="text" name="organization" required autocomplete="organization">
+                </label>
 
-            <label>Membership Level:
-                <select name="membership">
-                    <option value="np">NP Membership (Non-Profit)</option>
-                    <option value="bronze">Bronze Membership</option>
-                    <option value="silver">Silver Membership</option>
-                    <option value="gold">Gold Membership</option>
-                </select>
-            </label>
+                <label>Membership Level:
+                    <select name="membership">
+                        <option value="np">NP Membership (Non-Profit)</option>
+                        <option value="bronze">Bronze Membership</option>
+                        <option value="silver">Silver Membership</option>
+                        <option value="gold">Gold Membership</option>
+                    </select>
+                </label>
 
-            <label>Organization Description:
-                <textarea name="description" title="Describe your organization"></textarea>
-            </label>
+                <label>Organization Description:
+                    <textarea name="description" title="Describe your organization"></textarea>
+                </label>
 
-            <input type="hidden" name="timestamp" id="timestamp">
-            <button type="submit">Submit Application Form</button>
-        </form>
+                <input type="hidden" name="timestamp" id="timestamp">
+                <button type="submit">Submit Application Form</button>
+            </form>
 
-        <section class="cards">
-            <div class="card" id="np-card">
-                <h3>NP Membership</h3>
-                <a href="#" onclick="showModal('modal-np')">View Benefits</a>
+            <section class="cards">
+                <div class="card" id="np-card">
+                    <h3>NP Membership</h3>
+                    <a href="#" onclick="showModal('modal-np')">View Benefits</a>
+                </div>
+                <div class="card" id="bronze-card">
+                    <h3>Bronze Membership</h3>
+                    <a href="#" onclick="showModal('modal-bronze')">View Benefits</a>
+                </div>
+                <div class="card" id="silver-card">
+                    <h3>Silver Membership</h3>
+                    <a href="#" onclick="showModal('modal-silver')">View Benefits</a>
+                </div>
+                <div class="card" id="gold-card">
+                    <h3>Gold Membership</h3>
+                    <a href="#" onclick="showModal('modal-gold')">View Benefits</a>
+                </div>
+            </section>
+
+            <!-- Modals -->
+            <div id="modal-np" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-np')">&times;</span>
+                    <h2>NP Membership Benefits</h2>
+                    <p>Free access to networking events and community listings.</p>
+                </div>
             </div>
-            <div class="card" id="bronze-card">
-                <h3>Bronze Membership</h3>
-                <a href="#" onclick="showModal('modal-bronze')">View Benefits</a>
+            <div id="modal-bronze" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-bronze')">&times;</span>
+                    <h2>Bronze Membership Benefits</h2>
+                    <p>Includes event discounts, basic promotion, and early access to news.</p>
+                </div>
             </div>
-            <div class="card" id="silver-card">
-                <h3>Silver Membership</h3>
-                <a href="#" onclick="showModal('modal-silver')">View Benefits</a>
+            <div id="modal-silver" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-silver')">&times;</span>
+                    <h2>Silver Membership Benefits</h2>
+                    <p>Includes all Bronze benefits plus spotlight homepage placement and featured interviews.</p>
+                </div>
             </div>
-            <div class="card" id="gold-card">
-                <h3>Gold Membership</h3>
-                <a href="#" onclick="showModal('modal-gold')">View Benefits</a>
-            </div>
-        </section>
-
-        <!-- Modals -->
-        <div id="modal-np" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal('modal-np')">&times;</span>
-                <h2>NP Membership Benefits</h2>
-                <p>Free access to networking events and community listings.</p>
+            <div id="modal-gold" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-gold')">&times;</span>
+                    <h2>Gold Membership Benefits</h2>
+                    <p>Includes all Silver benefits, exclusive training, and VIP event invitations.</p>
+                </div>
             </div>
         </div>
-        <div id="modal-bronze" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal('modal-bronze')">&times;</span>
-                <h2>Bronze Membership Benefits</h2>
-                <p>Includes event discounts, basic promotion, and early access to news.</p>
-            </div>
-        </div>
-        <div id="modal-silver" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal('modal-silver')">&times;</span>
-                <h2>Silver Membership Benefits</h2>
-                <p>Includes all Bronze benefits plus spotlight homepage placement and featured interviews.</p>
-            </div>
-        </div>
-        <div id="modal-gold" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal('modal-gold')">&times;</span>
-                <h2>Gold Membership Benefits</h2>
-                <p>Includes all Silver benefits, exclusive training, and VIP event invitations.</p>
-            </div>
-        </div>
-    </main>
-
-
     </main>
 
     <footer>
