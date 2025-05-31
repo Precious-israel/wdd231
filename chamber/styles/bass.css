@@ -359,35 +359,34 @@ h1 {
 }
 .hero {
   position: relative;
-  text-align: center;
-  color: white;
 }
 
 .hero img {
   width: 100%;
-  height: 400px;
-  object-fit: cover;
-   margin: -5px auto;
- 
+  height: auto;
+  display: block;
 }
 
-.hero .home {
+.hero-content {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 36, 68, 0.7);
-  padding: 2rem;
-  border-radius: 10px;
-  animation: fadeInUp 1s ease-in-out;
+  bottom: 1rem;
+  left: 1rem;
 }
 
-.hero .home h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #fff;
+.hero-content .btn {
+  background-color: #fdb813;
+  color: black;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
 }
 
+.hero-content .btn:hover {
+  background-color: #ff9800;
+}
 /* Join Button */
 .btn {
   background-color: #024;
@@ -399,6 +398,66 @@ h1 {
   border-radius: 5px;
   transition: background 0.3s ease, transform 0.3s ease;
   display: inline-block;
+}
+.hero {
+  position: relative;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.hero-content .btn {
+  background-color: #fdb813;
+  color: black;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);.hero {
+  position: relative;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.hero-content .btn {
+  background-color: #fdb813;
+  color: black;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.hero-content .btn:hover {
+  background-color: #ff9800;
+}
+
+  transition: background-color 0.3s ease;
+}
+
+.hero-content .btn:hover {
+  background-color: #ff9800;
 }
 
 .btn:hover,
