@@ -1,0 +1,80 @@
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Root variables for consistency */
+:root {
+    --primary-color: #003366;
+    --secondary-color: #E0E0E0;
+    --font-body: 'Roboto', sans-serif;
+    --font-heading: 'Open Sans', sans-serif;
+}
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--secondary-color);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05); 
+    background-color: blue;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4, h5, h6 {
+    font-size: 1.5rem;
+}
+
+/* Layout and spacing */
+main {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+div {
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background-color:lightblue ;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+}
+p{
+    color: black;
+    font-size: 1rem;
+    padding-top: 5px;
+}
