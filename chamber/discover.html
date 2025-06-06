@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Welcome to the Chamber of Commerce - Connecting businesses, building community." />
+  <meta name="author" content="Israel Ojo" />
+  <meta name="theme-color" content="#2a2a2a" />
+
+  <title>Discover Osogbo - Obokun Chamber of Commerce</title>
+
+  <link rel="stylesheet" href="styles/bass.css" />
+  <link rel="icon" href="favicon.ico" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Roboto:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Home - Obokun Chamber" />
+  <meta property="og:description" content="Explore local businesses and organizations in our Chamber of Commerce. This is an economic hub for CEOs and budding professionals in Osogbo." />
+  <meta property="og:image" content="images/chamber-icon.png" />
+  <meta property="og:url" content="https://oshogo-chamber.org/index.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Obokun Chamber of Commerce" />
+
+  <!-- JavaScript -->
+  <script src="scripts/scripts.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="images/icon.png" alt="Chamber Logo" class="logo" />
+        <div class="logo-text">
+          <span class="logo-title">Obokun</span>
+          <span class="logo-subtitle">Chamber of Commerce</span>
+        </div>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">&#9776;</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="join.html">Join</a></li>
+        <li><a href="discover.html">Discover</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <img src="images/banner.webp" alt="Welcome banner for Osogbo Chamber" class="banner" />
+    <div class="home">
+      <h1>Discover the Beauty of Osogbo</h1>
+
+      <aside id="visit-message">Plan your visit to the heart of Yoruba culture!</aside>
+
+      <section class="discover-grid">
+        <!-- Cards will be dynamically inserted here using JavaScript -->
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-left">
+        <p>
+          <strong>Obokun Chamber of Commerce</strong><br>
+          57, Okefia Crescent Obokun, Osogbo, Nigeria<br>
+          contact@Osogbochamber.com<br>
+          +2348038573366
+        </p>
+      </div>
+
+      <div class="footer-center">
+        <a href="https://youtube.com" target="_blank" aria-label="YouTube Channel">
+          <img src="images/youtube.png" alt="YouTube icon - Obokun Chamber channel" />
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter Profile">
+          <img src="images/x.png" alt="Twitter icon - Obokun Chamber" />
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn Page">
+          <img src="images/linkedin.png" alt="LinkedIn icon - Obokun Chamber" />
+        </a>
+      </div>
+
+      <div class="footer-right">
+        <p>WDD 231 Class Project<br>
+          Israel Ojo<br>
+          &copy; <span id="year"></span> Obokun Chamber of Commerce
+        </p>
+        <p>Last Modified: <span id="lastModified"></span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("year").textContent = new Date().getFullYear();
+      document.getElementById("lastModified").textContent = document.lastModified;
+      
+      document.getElementById("hamburger").addEventListener("click", () => {
+        document.getElementById("navLinks").classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+
+</html>

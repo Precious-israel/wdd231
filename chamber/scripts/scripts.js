@@ -1,195 +1,166 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ========== HAMBURGER MENU ==========
+  setupHamburgerMenu();
+  highlightCurrentNav();
+  updateFooterDates();
+  setupViewToggle();
+  loadMembers();
+  loadWeather();
+});
+
+// === Hamburger Menu ===
+function setupHamburgerMenu() {
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("navLinks");
-  const navItems = navLinks.querySelectorAll("a");
+  const navItems = navLinks?.querySelectorAll("a");
 
-  hamburger.addEventListener("click", () => {
+  hamburger?.addEventListener("click", () => {
     const isOpen = navLinks.classList.toggle("show");
+    hamburger.innerHTML = isOpen ? "&times;" : "&#9776;";
+    navLinks.classList.add(isOpen ? "animate-slide-in" : "animate-slide-out");
+    navLinks.classList.remove(isOpen ? "animate-slide-out" : "animate-slide-in");
 
-    if (isOpen) {
-      hamburger.innerHTML = "&times;"; // X icon
-      navLinks.classList.add("animate-slide-in");
-      navLinks.classList.remove("animate-slide-out");
+    navItems?.forEach((link, index) => {
+      link.style.animation = isOpen ? `fadeInUp 0.4s ease forwards ${index * 0.15}s` : "";
+    });
 
-      // Staggered fade-in animation for each nav item
-      navItems.forEach((link, index) => {
-        link.style.animation = `fadeInUp 0.4s ease forwards ${index * 0.15}s`;
-      });
-    } else {
-      hamburger.innerHTML = "&#9776;"; // hamburger icon
-      navLinks.classList.add("animate-slide-out");
-      navLinks.classList.remove("animate-slide-in");
-
-      // Remove individual animations on close
-      navItems.forEach((link) => {
-        link.style.animation = "";
-      });
-
-      // After slide-out animation ends, hide the menu
-      navLinks.addEventListener(
-        "animationend",
-        () => {
-          if (!navLinks.classList.contains("show")) {
-            navLinks.classList.remove("show");
-          }
-        },
-        { once: true }
-      );
+    if (!isOpen) {
+      navLinks.addEventListener("animationend", () => {
+        if (!navLinks.classList.contains("show")) {
+          navLinks.classList.remove("show");
+        }
+      }, { once: true });
     }
   });
+}
 
-  // ========== WAYFINDING ==========
+// === Navigation Wayfinding ===
+function highlightCurrentNav() {
   const currentPage = location.pathname.split("/").pop();
-  const navLinksItems = document.querySelectorAll(".nav-links a");
-
-  navLinksItems.forEach((link) => {
-    const linkHref = link.getAttribute("href");
-    if (linkHref === currentPage || (linkHref === "index.html" && currentPage === "")) {
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    const href = link.getAttribute("href");
+    if (href === currentPage || (href === "index.html" && currentPage === "")) {
       link.classList.add("active");
     }
   });
+}
 
-  // ========== FOOTER DATES ==========
+// === Footer Date Info ===
+function updateFooterDates() {
   const yearSpan = document.getElementById("year");
   const lastModifiedSpan = document.getElementById("lastModified");
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+  if (lastModifiedSpan) lastModifiedSpan.textContent = document.lastModified;
+}
 
-  if (yearSpan && lastModifiedSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-    lastModifiedSpan.textContent = document.lastModified;
-  }
-
-  // ========== MEMBER DIRECTORY ==========
+// === Member Directory ===
+async function loadMembers() {
   const container = document.getElementById("member-directory");
-
-  async function getMembers() {
-    try {
-      const response = await fetch("data/members.json");
-      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-      const members = await response.json();
-      displayMembers(members);
-      renderSpotlights(members);
-    } catch (error) {
-      console.error("Failed to load members:", error);
-      if (container) container.innerHTML = "<p>Error loading members data.</p>";
-    }
+  try {
+    const res = await fetch("data/members.json");
+    if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+    const members = await res.json();
+    renderMembers(container, members);
+    renderSpotlights(members);
+  } catch (error) {
+    console.error("Failed to load members:", error);
+    container.innerHTML = "<p>Error loading members data.</p>";
   }
+}
 
-  function displayMembers(members) {
-    if (!container) return;
-    container.innerHTML = "";
+function renderMembers(container, members) {
+  if (!container) return;
+  container.innerHTML = "";
+  members.forEach(member => {
+    const card = document.createElement("section");
+    card.innerHTML = `
+      <div class="member-info">
+        <h2>${member.name}</h2>
+        <img src="${member.image}" alt="${member.name} logo" loading="lazy" />
+        <p><strong>Email:</strong> ${member.email}</p>
+        <p><strong>Phone:</strong> ${member.phone}</p>
+        <p><strong>Website:</strong> <a href="${member.website}" target="_blank">Visit Website</a></p>
+        <p><strong>Membership:</strong> ${getMembershipLevel(member.membership)}</p>
+      </div>`;
+    container.appendChild(card);
+  });
+}
 
-    members.forEach((member) => {
-      const card = document.createElement("section");
-      card.innerHTML = `
-        <div class="member-info">
-          <h2>${member.name}</h2>
-          <img src="${member.image}" alt="${member.name} logo" loading="lazy" />
-          <p><strong>Email:</strong> ${member.email}</p>
-          <p><strong>Phone:</strong> ${member.phone}</p>
-          <p><strong>Website:</strong> <a href="${member.website}" target="_blank" rel="noopener noreferrer">Visit Website</a></p>
-          <p><strong>Membership:</strong> ${getMembershipLevel(member.membership)}</p>
-        </div>
-      `;
-      container.appendChild(card);
-    });
-  }
+// === View Toggle ===
+function setupViewToggle() {
+  const container = document.getElementById("member-directory");
+  const gridBtn = document.getElementById("grid-view");
+  const listBtn = document.getElementById("list-view");
 
-  // ========== VIEW TOGGLE ==========
-  const gridViewBtn = document.getElementById("grid-view");
-  const listViewBtn = document.getElementById("list-view");
+  gridBtn?.addEventListener("click", () => {
+    container.classList.add("grid-view");
+    container.classList.remove("list-view");
+  });
 
-  if (gridViewBtn && listViewBtn) {
-    gridViewBtn.addEventListener("click", () => {
-      container.classList.add("grid-view");
-      container.classList.remove("list-view");
-    });
+  listBtn?.addEventListener("click", () => {
+    container.classList.add("list-view");
+    container.classList.remove("grid-view");
+  });
+}
 
-    listViewBtn.addEventListener("click", () => {
-      container.classList.add("list-view");
-      container.classList.remove("grid-view");
-    });
-  }
-
-  // Load members on page load
-  getMembers();
-
-  // ========== WEATHER SECTION ==========
+// === Weather Section ===
+function loadWeather() {
   const apiKey = "deeb8c3f3000b0bf5086e73cdb73247f";
   const city = "Osogbo,NG";
   const units = "metric";
 
-  const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${apiKey}`;
+  fetchWeather(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`);
+  fetchForecast(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${apiKey}`);
+}
 
-  // Fetch current weather
-  fetch(currentWeatherUrl)
-    .then((res) => {
-      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-      return res.json();
+function fetchWeather(url) {
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("current-temp").textContent = `Temperature: ${data.main.temp} °C`;
+      document.getElementById("current-desc").textContent = `Condition: ${data.weather[0].description}`;
+      const icon = document.getElementById("current-icon");
+      icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+      icon.alt = data.weather[0].description;
     })
-    .then((data) => {
-      if (!data || !data.main || !data.weather) throw new Error("Malformed weather data");
+    .catch(err => console.error("Weather error:", err));
+}
 
-      const tempEl = document.getElementById("current-temp");
-      const descEl = document.getElementById("current-desc");
-      const iconEl = document.getElementById("current-icon");
-
-      if (tempEl) tempEl.textContent = `Temperature: ${data.main.temp} °C`;
-      if (descEl) descEl.textContent = `Condition: ${data.weather[0].description}`;
-      if (iconEl) {
-        const iconCode = data.weather[0].icon;
-        iconEl.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-        iconEl.alt = data.weather[0].description || "Weather Icon";
-      }
-    })
-    .catch((err) => console.error("Error fetching current weather:", err));
-
-  // Fetch 3-day forecast at 12:00 PM each day
-  fetch(forecastUrl)
-    .then((res) => {
-      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-      return res.json();
-    })
-    .then((data) => {
+function fetchForecast(url) {
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
       const forecastEl = document.getElementById("forecast");
       if (!forecastEl) return;
-
-      forecastEl.innerHTML = ""; // Clear old forecast
+      forecastEl.innerHTML = "";
 
       const daily = {};
-
-      data.list.forEach((entry) => {
+      data.list.forEach(entry => {
         const [date, time] = entry.dt_txt.split(" ");
         if (time === "12:00:00" && !daily[date]) {
           daily[date] = entry;
         }
       });
 
-      const forecastDays = Object.entries(daily).slice(0, 3);
-      forecastDays.forEach(([date, entry]) => {
+      Object.entries(daily).slice(0, 3).forEach(([date, entry]) => {
+        const iconUrl = `https://openweathermap.org/img/wn/${entry.weather[0].icon}@2x.png`;
         const li = document.createElement("li");
-        const iconCode = entry.weather[0].icon;
-        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-
-        li.innerHTML = `${date}: ${entry.main.temp} °C <img src="${iconUrl}" alt="${entry.weather[0].description}" style="vertical-align:middle;" />`;
+        li.innerHTML = `${date}: ${entry.main.temp} °C <img src="${iconUrl}" alt="${entry.weather[0].description}" />`;
         forecastEl.appendChild(li);
       });
     })
-    .catch((err) => console.error("Error fetching forecast:", err));
-});
+    .catch(err => console.error("Forecast error:", err));
+}
 
-// ========== SPOTLIGHTS ==========
+// === Spotlights ===
 function renderSpotlights(members) {
-  const eligibleMembers = members.filter((m) => m.membership === 2 || m.membership === 3);
-  const spotlightCount = Math.floor(Math.random() * 2) + 2; // 2 or 3 spotlights
-  const selected = shuffle(eligibleMembers).slice(0, spotlightCount);
-
+  const eligible = members.filter(m => m.membership === 2 || m.membership === 3);
+  const spotlightCount = Math.floor(Math.random() * 2) + 2;
+  const selected = shuffle(eligible).slice(0, spotlightCount);
   const container = document.getElementById("spotlightContainer") || document.getElementById("spotlight");
   if (!container) return;
-  container.innerHTML = ""; // clear previous
 
-  selected.forEach((member) => {
+  container.innerHTML = "";
+  selected.forEach(member => {
     const card = document.createElement("div");
     card.className = "spotlight-card";
     card.innerHTML = `
@@ -197,14 +168,14 @@ function renderSpotlights(members) {
       <h3>${member.name}</h3>
       <p><strong>Phone:</strong> ${member.phone}</p>
       <p><strong>Address:</strong> ${member.address || ""}</p>
-      <p><a href="${member.website}" target="_blank" rel="noopener noreferrer">Visit Website</a></p>
+      <p><a href="${member.website}" target="_blank">Visit Website</a></p>
       <p class="level">${getMembershipLevel(member.membership)} Member</p>
     `;
     container.appendChild(card);
   });
 }
 
-// Helper: Shuffle array (Fisher-Yates)
+// === Helpers ===
 function shuffle(array) {
   const arr = array.slice();
   for (let i = arr.length - 1; i > 0; i--) {
@@ -214,83 +185,103 @@ function shuffle(array) {
   return arr;
 }
 
-// Map numeric membership to readable form
 function getMembershipLevel(num) {
   return num === 3 ? "Gold" : num === 2 ? "Silver" : "Member";
 }
-// Combined window.onload logic
-window.onload = () => {
-    // 1. Auto-fill the timestamp in the hidden input (if exists)
-    const timestampField = document.getElementById('timestamp');
-    if (timestampField) {
-        const now = new Date();
-        timestampField.value = now.toISOString();
-    }
 
-    // 2. Display form data from query parameters (if present)
-    displayFormData();
-};
-
-// Modal functionality
+// === Modal Logic ===
 function showModal(id) {
-    const modal = document.getElementById(id);
-    if (modal) {
-        modal.style.display = 'flex';
-    }
+  const modal = document.getElementById(id);
+  if (modal) modal.style.display = 'flex';
 }
 
 function closeModal(id) {
-    const modal = document.getElementById(id);
-    if (modal) {
-        modal.style.display = 'none';
-    }
+  const modal = document.getElementById(id);
+  if (modal) modal.style.display = 'none';
 }
 
-// Close modal on click outside
-window.addEventListener('click', function (e) {
-    document.querySelectorAll('.modal').forEach(modal => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
+window.addEventListener("click", (e) => {
+  document.querySelectorAll(".modal").forEach(modal => {
+    if (e.target === modal) modal.style.display = "none";
+  });
 });
 
-// Get form data from URL parameters
+// === Form Auto-Fill and Display ===
+window.onload = () => {
+  const timestamp = document.getElementById("timestamp");
+  if (timestamp) timestamp.value = new Date().toISOString();
+  displayFormData();
+};
+
 function getQueryParams() {
-    const params = new URLSearchParams(window.location.search);
-    return {
-        firstName: params.get('firstName') || '',
-        lastName: params.get('lastName') || '',
-        email: params.get('email') || '',
-        phone: params.get('phone') || '',
-        organization: params.get('organization') || '',
-        timestamp: params.get('timestamp') || ''
-    };
+  const params = new URLSearchParams(window.location.search);
+  return {
+    firstName: params.get("firstName") || '',
+    lastName: params.get("lastName") || '',
+    email: params.get("email") || '',
+    phone: params.get("phone") || '',
+    organization: params.get("organization") || '',
+    timestamp: params.get("timestamp") || ''
+  };
 }
 
-// Display the form data
 function displayFormData() {
-    const data = getQueryParams();
-    const displayDiv = document.getElementById('formDataDisplay');
+  const data = getQueryParams();
+  const display = document.getElementById("formDataDisplay");
+  if (!display) return;
 
-    // Only format timestamp if it's valid
-    let formattedTimestamp = 'Not provided';
-    if (data.timestamp) {
-        const date = new Date(data.timestamp);
-        if (!isNaN(date)) {
-            formattedTimestamp = date.toLocaleString();
-        }
-    }
+  const formattedTime = data.timestamp && !isNaN(new Date(data.timestamp))
+    ? new Date(data.timestamp).toLocaleString()
+    : 'Not provided';
 
-    if (displayDiv) {
-        displayDiv.innerHTML = `
-            <p><strong>First Name:</strong> ${data.firstName}</p>
-            <p><strong>Last Name:</strong> ${data.lastName}</p>
-            <p><strong>Email:</strong> ${data.email}</p>
-            <p><strong>Mobile Number:</strong> ${data.phone}</p>
-            <p><strong>Organization Name:</strong> ${data.organization}</p>
-            <p><strong>Timestamp:</strong> ${formattedTimestamp}</p>
-        `;
-    }
+  display.innerHTML = `
+    <p><strong>First Name:</strong> ${data.firstName}</p>
+    <p><strong>Last Name:</strong> ${data.lastName}</p>
+    <p><strong>Email:</strong> ${data.email}</p>
+    <p><strong>Mobile Number:</strong> ${data.phone}</p>
+    <p><strong>Organization Name:</strong> ${data.organization}</p>
+    <p><strong>Timestamp:</strong> ${formattedTime}</p>
+  `;
 }
+//  directory
+document.addEventListener("DOMContentLoaded", () => {
+  // Visit message logic
+  const sidebar = document.getElementById("visit-message");
+  const lastVisit = localStorage.getItem("lastVisit");
+  const now = Date.now();
+
+  if (!lastVisit) {
+    sidebar.textContent = "Welcome! Let us know if you have any questions.";
+  } else {
+    const difference = now - parseInt(lastVisit);
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    sidebar.textContent = days < 1
+      ? "Back so soon! Awesome!"
+      : `You last visited ${days} ${days === 1 ? "day" : "days"} ago.`;
+  }
+
+  localStorage.setItem("lastVisit", now);
+
+  // Load discover cards
+  fetch("data/discover.json")
+    .then(res => res.json())
+    .then(data => {
+      const section = document.querySelector(".discover-grid");
+      data.forEach(item => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+          <h2>${item.title}</h2>
+          <figure><img src="${item.image}" alt="${item.title}" loading="lazy" /></figure>
+          <address>${item.address}</address>
+          <p>${item.description}</p>
+          <button>Learn More</button>
+        `;
+        section.appendChild(card);
+      });
+    })
+    .catch(error => console.error("Error loading discover.json:", error));
+});
+
+
 

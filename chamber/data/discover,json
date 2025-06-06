@@ -1,0 +1,51 @@
+
+[
+  {
+    "title": "Osun-Osogbo Sacred Grove",
+    "image": "images/osun-grove.webp",
+    "address": "Osogbo, Osun State",
+    "description": "A UNESCO World Heritage Site, this sacred forest is a symbol of Yoruba spirituality and heritage."
+  },
+  {
+    "title": "Nike Art Gallery",
+    "image": "images/nike-art.webp",
+    "address": "Osogbo-Iwo Road, Osogbo",
+    "description": "One of Nigeria's top art galleries featuring works by local artists, traditional crafts, and workshops."
+  },
+  {
+    "title": "Ataoja Palace",
+    "image": "images/ataoja-palace.webp",
+    "address": "Old Ikirun Road, Osogbo",
+    "description": "Historic palace of the traditional ruler of Osogbo, rich in culture and architecture."
+  },
+  {
+    "title": "Osun State Government House",
+    "image": "images/government-house.webp",
+    "address": "G.R.A., Osogbo",
+    "description": "The seat of the state government, often visited for civic engagement and tourism."
+  },
+  {
+    "title": "Laro Timehin College",
+    "image": "images/laro-college.webp",
+    "address": "Laro Layout, Osogbo",
+    "description": "A historical institution known for academic excellence and community contributions."
+  },
+  {
+    "title": "Unity Park",
+    "image": "images/unity-park.webp",
+    "address": "Ring Road, Osogbo",
+    "description": "A family-friendly park ideal for relaxation and small events."
+  },
+  {
+    "title": "Osogbo City Stadium",
+    "image": "images/osogbo-stadium.webp",
+    "address": "Gbongan Road, Osogbo",
+    "description": "A popular venue for sports events and cultural festivals."
+  },
+  {
+    "title": "Nelson Mandela Freedom Park",
+    "image": "images/mandela-park.webp",
+    "address": "Old Garage, Osogbo",
+    "description": "A tribute park dedicated to Nelson Mandela, a peaceful recreation spot in the heart of the city."
+  }
+]
