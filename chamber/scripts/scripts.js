@@ -273,8 +273,8 @@ document.addEventListener("DOMContentLoaded", () => {
         card.innerHTML = `
           <h2>${item.title}</h2>
           <figure><img src="${item.image}" alt="${item.title}" loading="lazy" /></figure>
-          <address>${item.address}</address>
           <p>${item.description}</p>
+          <address>${item.address}</address>
           <button>Learn More</button>
         `;
         section.appendChild(card);

@@ -679,12 +679,18 @@ header + .cards {
         /* DISCOVER GRID SECTION */
 .discover-grid {
   display: grid;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding: 1rem;
+  grid-template-areas:
+  "title"
+  "image"
+  "description"
+  "address" 
+  "button";
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  overflow: hidden;
 }
-/* CARDS */
-.card {
+
+/* .card {
   background-color: #fff;
   padding: 1rem;
   border-radius: 0.75rem;
@@ -700,6 +706,7 @@ header + .cards {
   font-family: 'Domine', serif;
   margin-bottom: 0.5rem;
   color: #2a2a2a;
+  grid-area: title;
 }
 
 .card img {
@@ -707,19 +714,89 @@ header + .cards {
   height: auto;
   border-radius: 0.5rem;
   margin: 0.5rem 0;
+  grid-area: image;
 }
 
 .card address {
   font-style: normal;
   color: #555;
   margin-bottom: 0.5rem;
+  grid-area: address;
 }
 
 .card p {
   margin-bottom: 1rem;
+  grid-area: description;
+} */
+
+
+.card {
+  display: grid;
+  grid-template-areas:
+    "image title"
+    "image description"
+    "image address"
+    "image button";
+  grid-template-columns: 40% 60%;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.card h2 {
+  grid-area: title;
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius:  0.5rem;
+  max-height: 200px; /* or another consistent height */
+  display: block;
+  transition: none; /* default for mobile */
+  filter: none;
+  transform: none;
+}
+
+.card figure {
+  grid-area: image;
+  margin: 0;
+  height: 100%;
+}
+
+.card p {
+  grid-area: description;
+  margin: 0;
+   font-size: 0.95rem;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+  max-height: 4.2em; /* around 3 lines */
+  overflow: hidden;
+}
+
+.card address {
+  grid-area: address;
+  margin: 0;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.2;
+  word-wrap: break-word;
 }
 
 .card button {
+  grid-area: button;
   background-color: #2a2a2a;
   color: #fff;
   border: none;
@@ -732,25 +809,41 @@ header + .cards {
   background-color: #444;
 }
 
+
 /* RESPONSIVE GRID */
 @media (max-width: 639px) {
-  /* Small screens: 1 column */
-  .discover-grid {
+  .card {
+    grid-template-areas:
+      "title"
+      "image"
+      "description"
+      "address"
+      "button";
     grid-template-columns: 1fr;
   }
+   .card img {
+    max-height: 250px;
+  }
 }
+
 
 @media (min-width: 640px) and (max-width: 1023px) {
   /* Medium screens: 2 columns */
   .discover-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+ 
 }
 
 @media (min-width: 1024px) {
   /* Large screens: 3 columns */
   .discover-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+   .card img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    filter: brightness(1.1);
   }
 }
 
