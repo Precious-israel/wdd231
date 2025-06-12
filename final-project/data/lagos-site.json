@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Nike Art Gallery",
+    "image": "images/nike-art.jpg",
+    "description": "One of the largest art galleries in West Africa showcasing traditional and contemporary Nigerian art.",
+    "location": "Lekki"
+  },
+  {
+    "name": "Lekki Conservation Centre",
+    "image": "images/lekki-conservation.jpg",
+    "description": "Explore Nigeria’s longest canopy walkway, wildlife, and lush vegetation.",
+    "location": "Lekki"
+  },
+  {
+    "name": "Freedom Park",
+    "image": "images/freedom-park.jpg",
+    "description": "A former colonial prison transformed into a memorial and cultural site.",
+    "location": "Lagos Island"
+  },
+  {
+    "name": "National Theatre",
+    "image": "images/national-theatre.jpg",
+    "description": "Iconic structure for arts, drama, and musical performances.",
+    "location": "Iganmu"
+  },
+  {
+    "name": "Elegushi Beach",
+    "image": "images/elegushi.jpg",
+    "description": "A lively beach with restaurants, music, and nightlife.",
+    "location": "Lekki"
+  },
+  {
+    "name": "Tarkwa Bay",
+    "image": "images/tarkwa-bay.jpg",
+    "description": "Secluded beach ideal for picnics, surfing, and sunbathing.",
+    "location": "Near Lagos Harbour"
+  },
+  {
+    "name": "Omu Resort",
+    "image": "images/omu-resort.jpg",
+    "description": "Combines amusement park, zoo, and water sports for family fun.",
+    "location": "Bogije"
+  },
+  {
+    "name": "The Cathedral Church of Christ",
+    "image": "images/cathedral.jpg",
+    "description": "Historic Anglican cathedral known for its colonial architecture.",
+    "location": "Lagos Island"
+  },
+  {
+    "name": "National Museum Lagos",
+    "image": "images/national-museum.jpg",
+    "description": "Houses artifacts and cultural relics including the famous Benin Bronzes.",
+    "location": "Onikan"
+  },
+  {
+    "name": "Kalakuta Museum",
+    "image": "images/kalakuta.jpg",
+    "description": "Fela Kuti’s former home turned into a museum of Afrobeat legacy.",
+    "location": "Ikeja"
+  }
+]

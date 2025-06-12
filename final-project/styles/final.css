@@ -1,0 +1,735 @@
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header and Navigation */
+header {
+  margin-bottom: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5%;
+  padding-right: 5%;
+  background: #024;
+  color: #fff;
+  position: relative;
+}
+
+/* Logo and Text Container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.1;
+}
+
+.logo-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo-subtitle {
+  font-size: 0.875rem;
+  font-weight: normal;
+}
+
+nav .logo {
+  height: 50px;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover and Active States */
+.nav-links a:hover,
+.nav-links a:focus {
+  color: #ef9413;
+  transform: scale(1.1);
+  text-shadow: 0 0 5px rgba(239,148,19, 0.7);
+}
+
+.nav-links a.active {
+  border-bottom: 2px solid #fff;
+  font-weight: bold;
+}
+
+/* Hamburger Button */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Banner Image */
+.banner {
+  display: block;
+  width: 90%;
+  height: 400px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+/* Home Section */
+.home, 
+.hero {
+  width: 92%;
+  margin: 5px auto;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+/* View Buttons */
+.view-buttons {
+  text-align: center;
+  margin: 1rem;
+}
+
+.view-buttons button {
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border: none;
+  background: #024;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.view-buttons button:hover {
+  background: #046;
+}
+
+/* Member Directory Styles */
+#member-directory.grid-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+#member-directory.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Member Card Styles */
+#member-directory section {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  background: #f9f9f9;
+  text-align: left;
+  transition: background-color 0.3s ease;
+  flex-wrap: wrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+#member-directory section:hover {
+  background-color: #eef;
+}
+
+/* Member Image */
+#member-directory img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+/* Hide Images in List View */
+#member-directory.list-view img {
+  display: none;
+}
+
+/* Member Information */
+.member-info {
+  flex: 1 1 200px;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.member-info h2 {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.25rem;
+  font-size: 1.25rem;
+}
+
+.member-info p {
+  margin: 0.25rem 0;
+  line-height: 1.4;
+}
+
+.member-info a {
+  word-break: break-word;
+  color: #024;
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background: #024;
+  color: white;
+  padding: 1.5rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-left,
+.footer-right {
+  flex: 1 1 200px;
+}
+
+.footer-center {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 100px;
+}
+
+.footer-center img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s;
+}
+
+.footer-center a:hover img {
+  transform: scale(1.2);
+}
+
+.footer-right p,
+.footer-left p {
+  margin: 0;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.footer-left p {
+  text-align: left;
+  padding-left: 15%;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #024;
+    width: 100%;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    border-top: 1px solid #046;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    flex: 1 1 100%;
+    padding: 0;
+    text-align: center;
+  }
+
+  .footer-left p {
+    padding-left: 0;
+  }
+
+  .footer-center {
+    margin: 1rem 0;
+    justify-content: center;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.8s forwards;
+}
+
+.animate-slide-out {
+  animation: slideOut 0.8s forwards;
+}
+
+
+
+/* Home Html Part*/
+/* Hero Section */
+h1 {
+  color: #024;
+  text-align: left;
+  padding-left: 80px;
+}
+
+.hero-content .btn {
+  background-color: #fdb813;
+  color: black;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.hero-content .btn:hover {
+  background-color: #ff9800;
+}
+/* Join Button */
+.btn {
+  background-color: #024;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+.hero {
+  position: relative;
+  width: 92%;
+  margin: 5px auto;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.hero img {
+  display: block;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  margin: 0 auto;
+  margin-top: -5px;
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+}
+
+
+/* Events and Weather Layout */
+#events-weather-wrapper-home {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+  width: 90%;
+  margin: 2rem auto;
+}
+
+#events-weather-wrapper-home .events {
+  flex: 2 1 40%;
+  background: #f1f1f1;
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 250px;
+}
+
+#events-weather-wrapper-home #weather,
+#events-weather-wrapper-home #three-day-forecast {
+  flex: 1 1 25%;
+  background: #f1f1f1;
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 200px;
+}
+
+#three-day-forecast ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+
+.events ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+#weather h2, #weather h3 {
+  margin-top: 0;
+}
+
+#current-weather img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Spotlights Section */
+.spotlights {
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #eef;
+  border-radius: 10px;
+}
+
+.spotlights h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.spotlight-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.spotlight-container .spotlight-card {
+  background: #eef;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 29%;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.spotlight-container .spotlight-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+/* Responsive Styles for Spotlight Section */
+@media (max-width: 768px) {
+  .spotlight-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .spotlight-container .spotlight-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Modal */
+/*.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}*/
+/*
+.modal-content {
+  background: white;
+  padding: 2em;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 10px #333;
+}*/
+/*
+.modal-content button {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  background-color: #d84315;
+  border: none;
+  color: white;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #b13911;
+}
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+
+
+
+NOTE
+/* Hero Section for About Paragraph */
+.hero-about {
+  padding: 4rem 2rem;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+
+.hero-about .hero-text {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 900px;
+  margin: auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Mission & Vision - Side-by-side Shadow Box */
+.mission-vision-boxed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.shadow-box {
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  padding: 2rem;
+  flex: 1 1 45%;
+  transition: transform 0.3s ease;
+}
+
+.shadow-box:hover {
+  transform: translateY(-5px);
+}
+
+.shadow-box h2 {
+  color: #003366;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #005599;
+  padding-bottom: 0.5rem;
+}
+
+/* Core Values */
+.values {
+  background-color: #e6f2ff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 102, 204, 0.1);
+  border-left: 5px solid #005599;
+  margin-bottom: 2rem;
+}
+
+.values h2 {
+  color: #003366;
+  margin-bottom: 1rem;
+}
+
+.values ul {
+  list-style: disc inside;
+  padding-left: 0;
+  margin: 0;
+}
+
+.values li {
+  margin-bottom: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #fff;
+  border-left: 4px solid #005599;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 51, 102, 0.05);
+  color: #002244;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* CTA Button */
+.btn {
+  display: inline-block;
+  background-color: #003366;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #005599;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 6px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-content form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.modal-content form input,
+.modal-content form select,
+.modal-content form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-content form button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-content form button:hover {
+  background-color: #004d99;
+}
+
+.success-message {
+  margin-top: 15px;
+  color: green;
+  font-size: 14px;
+  text-align: center;
+}
+
+

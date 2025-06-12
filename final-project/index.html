@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edsarah Confectionary & Supermart - Home</title>
+  <meta name="description"
+    content="Welcome to Edsarah Confectionary & Supermart - Fresh sweets and quality groceries in Lagos metropolis." />
+  <meta name="theme-color" content="#2a2a2a" />
+  <link rel="stylesheet" href="styles/final.css"/>
+  <link rel="icon" href="favicon.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Roboto:wght@100..900&display=swap"
+    rel="stylesheet">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Edsarah Confectionary & Supermart" />
+  <meta property="og:description" content="Fresh sweets and quality groceries in Lagos metropolis." />
+  <meta property="og:url" content="https://edsarahsupermart.ng/index.html" />
+  <meta property="og:site_name" content="Edsarah Confectionery and Supermart" />
+
+  <!-- JavaScript -->
+  <script src="scripts/scripts.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="images/logo.png" alt="Edsarah Confectionary & Supermart Logo" width="150" loading="lazy" />
+
+        <div class="logo-text">
+          <span class="logo-title">Edsarah</span>
+          <span class="logo-subtitle">Confectionary & Supermart</span>
+        </div>
+      </div>
+
+      <button class="hamburger" id="hamburger">&#9776;</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us<a></li>
+        <li><a href="discover.html">Discover</a></li>
+        
+        <li><a href="finalproject/index.html">Final</a></li> <!-- Your final project folder link -->
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <div class="hero" role="banner">
+       <img src="images/confectionery.webp" alt="Assorted sweets and groceries" width="600" loading="lazy" />
+      <div class="hero-content">
+        <a href="contact.html" class="btn">Contact Us</a>
+      </div>
+    </div>
+    <h1>Home</h1>
+    
+
+    <div id="events-weather-wrapper-home">
+      <section class="events">
+        <h2>Upcoming Events</h2>
+        <ul>
+          <li><strong>Business Expo</strong> - May 25, 2025</li>
+          <li><strong>Community Cleanup</strong> - June 3, 2025</li>
+        </ul>
+      </section>
+
+      <section id="weather">
+        <h2> eather in Lagos</h2>
+        <p id="current-temp">Loading temperature...</p>
+        <p id="current-desc">Loading description...</p>
+        <img src="images/weather-icon.svg" id="current-icon" alt="Weather Icon" />
+      </section>
+
+      <section id="three-day-forecast">
+        <h2>3-Day Forecast</h2>
+        <ul id="forecast"></ul>
+      </section>
+    </div>
+
+    <!-- Spotlights Section -->
+    <section class="spotlights">
+      <h2>Member Spotlights</h2>
+      <div class="spotlight-container" id="spotlightContainer">
+        <!-- spotlight cards inserted by JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-left">
+        <p><strong>Edsarah Confectionery and Supermart</strong><br>
+          57-61, Sarah Boulvard, Lekki extension, Lagos, Nigeria<br>
+          contact@edsarahsupermaet.ng<br>
+          +2348038573366, +2348083465767
+        </p>
+      </div>
+
+      <div class="footer-center">
+        <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+          <img src="images/youtube.png" alt="YouTube" />
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <img src="images/x.png" alt="Twitter" />
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <img src="images/linkedin.png" alt="LinkedIn" />
+        </a>
+      </div>
+
+      <div class="footer-right">
+        <p>WDD 231 Class Project<br>
+          Israel Ojo<br>
+          &copy; Edsarah Confectionery and Supermart
+        </p>
+        <p><span id="year"></span> | Last Modified: <span id="lastModified"></span></p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

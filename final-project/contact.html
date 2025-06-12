@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - Edsarah Confectionery and Supermart</title>
+  <meta name="description" content="Find all Edsarah branches across Lagos metropolis with addresses and contact details." />
+  <meta name="author" content="Your Name" />
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="styles/final.css" />
+  
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Roboto:wght@100..900&display=swap"
+    rel="stylesheet">
+
+  <meta property="og:title" content="Edsarah Branches" />
+  <meta property="og:description" content="Find all Edsarah branches across Lagos metropolis." />
+  <meta property="og:url" content="https://edsarahsupermart.ng" />
+  <meta property="og:site_name" content="Edsarah Confectionery and Supermart" />
+
+  <script src="scripts/scripts.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="images/logo.png" alt="Edsarah Confectionary & Supermart Logo" width="150" loading="lazy" />
+        <div class="logo-text">
+          <span class="logo-title">Edsarah</span>
+          <span class="logo-subtitle">Confectionary & Supermart</span>
+        </div>
+      </div>
+
+      <button class="hamburger" id="hamburger">&#9776;</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html" class="active">Contact Us</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="branches-section">
+      <h2>Our Branches</h2>
+      <div id="branches-container" class="branches"></div>
+      <button id="openModalBtn">Submit a Complaint</button>
+    </section>
+  </main>
+
+  <!-- Modal Form -->
+  <div id="complaintModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModalBtn">&times;</span>
+      <h2>Submit a Complaint</h2>
+      <form id="complaint-form">
+        <label for="customerName">Full Name</label>
+        <input type="text" id="customerName" name="customerName" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="branch">Select Branch</label>
+        <select id="branch" name="branch" required>
+          <option value="">-- Select Branch --</option>
+          <!-- Populated dynamically -->
+        </select>
+
+        <label for="message">Complaint Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Submit Complaint</button>
+      </form>
+
+      <div id="form-message" class="success-message"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-left">
+        <p><strong>Edsarah Confectionery and Supermart</strong><br>
+          57-61, Sarah Boulvard, Lekki extension, Lagos, Nigeria<br>
+          contact@edsarahsupermaet.ng<br>
+          +2348038573366, +2348083465767
+        </p>
+      </div>
+
+      <div class="footer-center">
+        <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+          <img src="images/youtube.png" alt="YouTube" />
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <img src="images/x.png" alt="Twitter" />
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <img src="images/linkedin.png" alt="LinkedIn" />
+        </a>
+      </div>
+
+      <div class="footer-right">
+        <p>WDD 231 Class Project<br>
+          Israel Ojo<br>
+          &copy; Edsarah Confectionery and Supermart
+        </p>
+        <p><span id="year"></span> | Last Modified: <span id="lastModified"></span></p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
