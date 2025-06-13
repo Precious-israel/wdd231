@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initModal();
   initThankYouPage();
   initSubscriptionForm();
-  loadLagosSites();       // Load only once
+  loadLagosSites();
   loadBranches();
   loadWeather();
   loadMembers();
@@ -41,17 +41,23 @@ function initFooterInfo() {
 
 // === Complaint Modal ===
 function initModal() {
-  const openModalBtn = document.getElementById("openModalBtn");
-  const complaintModal = document.getElementById("complaintModal");
-  const closeModalBtn = document.getElementById("closeModalBtn");
+  const modal = document.getElementById('complaintModal');
+  const openBtn = document.getElementById('openModalBtn');
+  const closeBtn = document.getElementById('closeModalBtn');
 
-  if (openModalBtn && complaintModal && closeModalBtn) {
-    openModalBtn.addEventListener("click", () => complaintModal.style.display = "block");
-    closeModalBtn.addEventListener("click", () => complaintModal.style.display = "none");
-    window.addEventListener("click", e => {
-      if (e.target === complaintModal) complaintModal.style.display = "none";
-    });
-  }
+  openBtn?.addEventListener('click', () => {
+    modal.style.display = 'block';
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
 }
 
 // === Thank You Page Handler ===
@@ -111,7 +117,6 @@ function loadLagosSites() {
   const locationGrid = document.getElementById("locationGrid");
   if (!locationGrid) return;
 
-  // Clear any previously loaded content to avoid duplicates
   locationGrid.innerHTML = "";
 
   fetch("scripts/lagos-sites.json")
@@ -142,26 +147,45 @@ function loadLagosSites() {
 // === Load Branches ===
 function loadBranches() {
   const container = document.getElementById('branches-container');
-  if (!container) return;
+  const branchSelect = document.getElementById('branch');
+  if (!container || !branchSelect) return;
 
-  fetch('data/branches.json')
-    .then(res => res.json())
+  fetch('data/branches,.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Failed to fetch');
+      return res.json();
+    })
     .then(data => {
+      container.innerHTML = '';
+      branchSelect.innerHTML = '<option value="">-- Select Branch --</option>';
+
       data.forEach(branch => {
         const branchEl = document.createElement('section');
         branchEl.className = 'branch';
-        branchEl.innerHTML = `<h2>${branch.name}</h2><p>${branch.address}</p>`;
+        branchEl.innerHTML = `
+          <img src="${branch.images}" alt="${branch.name}" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:10px;">
+          <h3>${branch.name}</h3>
+          <p><strong>Location:</strong> ${branch.location}</p>
+          <p><strong>Features:</strong> ${branch.features}</p>
+          ${branch.contact ? `<p><strong>Contact:</strong> ${branch.contact}</p>` : ''}
+        `;
         container.appendChild(branchEl);
+
+        const option = document.createElement('option');
+        option.value = branch.name;
+        option.textContent = branch.name;
+        branchSelect.appendChild(option);
       });
     })
-    .catch(() => {
+    .catch(err => {
+      console.error('Error loading branches:', err);
       container.innerHTML = `<p>Unable to load branches at the moment.</p>`;
     });
 }
 
 // === Load Weather Info ===
 function loadWeather() {
-  const apiKey = "dee629b7caae56879f8e7d4eb7c8ffaa"; // For dev only
+  const apiKey = "dee629b7caae56879f8e7d4eb7c8ffaa";
   const city = "Lagos,NG";
   const units = "metric";
 
