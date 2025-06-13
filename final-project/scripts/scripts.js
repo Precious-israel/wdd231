@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initModal();
   initThankYouPage();
   initSubscriptionForm();
-  loadLagosSites();
+  loadLagosSites();       // Load only once
   loadBranches();
   loadWeather();
   loadMembers();
@@ -13,28 +13,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === Responsive Navigation ===
 function initNavigation() {
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  hamburger?.addEventListener('click', () => navLinks.classList.toggle('active'));
-
+  const hamburger = document.getElementById('hamburger') || document.querySelector('.hamburger');
+  const navLinks = document.getElementById('navLinks') || document.querySelector('.nav-links');
   const menuToggle = document.getElementById('menu-toggle');
   const navbar = document.getElementById('navbar');
+
+  hamburger?.addEventListener('click', () => {
+    navLinks?.classList.toggle('active');
+    navLinks?.classList.toggle('show');
+  });
+
   menuToggle?.addEventListener('click', () => {
     const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
     menuToggle.setAttribute('aria-expanded', !expanded);
-    navbar.classList.toggle('show');
+    navbar?.classList.toggle('show');
   });
 }
 
-// === Footer Year & Last Modified ===
+// === Footer Info (Year & Last Modified) ===
 function initFooterInfo() {
   const yearSpan = document.getElementById('year');
   const lastModifiedSpan = document.getElementById('lastModified');
+
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
   if (lastModifiedSpan) lastModifiedSpan.textContent = document.lastModified;
 }
 
-// === Modal Handling ===
+// === Complaint Modal ===
 function initModal() {
   const openModalBtn = document.getElementById("openModalBtn");
   const complaintModal = document.getElementById("complaintModal");
@@ -49,7 +54,7 @@ function initModal() {
   }
 }
 
-// === Thank You Page Message ===
+// === Thank You Page Handler ===
 function initThankYouPage() {
   const thankYouMessage = document.getElementById("thankyou-message");
   if (!thankYouMessage) return;
@@ -59,7 +64,7 @@ function initThankYouPage() {
   const email = decodeURIComponent(params.get("email") || "your email");
   const time = new Date().toLocaleString();
 
-  let records = JSON.parse(localStorage.getItem("subscriptionRecords")) || [];
+  const records = JSON.parse(localStorage.getItem("subscriptionRecords")) || [];
   records.push({ name, email, time });
   localStorage.setItem("subscriptionRecords", JSON.stringify(records));
 
@@ -75,7 +80,7 @@ function initThankYouPage() {
   thankYouMessage.focus();
 }
 
-// === Subscription Form Submission ===
+// === Subscription Form ===
 function initSubscriptionForm() {
   const form = document.getElementById('subscribe-form');
   if (!form) return;
@@ -90,9 +95,8 @@ function initSubscriptionForm() {
       return;
     }
 
-    let records = JSON.parse(localStorage.getItem('subscribers')) || [];
-    const exists = records.some(entry => entry.email === email);
-    if (!exists) {
+    const records = JSON.parse(localStorage.getItem('subscribers')) || [];
+    if (!records.some(entry => entry.email === email)) {
       records.push({ name, email });
       localStorage.setItem('subscribers', JSON.stringify(records));
     }
@@ -106,6 +110,9 @@ function initSubscriptionForm() {
 function loadLagosSites() {
   const locationGrid = document.getElementById("locationGrid");
   if (!locationGrid) return;
+
+  // Clear any previously loaded content to avoid duplicates
+  locationGrid.innerHTML = "";
 
   fetch("scripts/lagos-sites.json")
     .then(res => {
@@ -132,7 +139,7 @@ function loadLagosSites() {
     });
 }
 
-// === Branches Display ===
+// === Load Branches ===
 function loadBranches() {
   const container = document.getElementById('branches-container');
   if (!container) return;
@@ -152,9 +159,9 @@ function loadBranches() {
     });
 }
 
-// === Weather Display ===
+// === Load Weather Info ===
 function loadWeather() {
-  const apiKey = "dee629b7caae56879f8e7d4eb7c8ffaa";
+  const apiKey = "dee629b7caae56879f8e7d4eb7c8ffaa"; // For dev only
   const city = "Lagos,NG";
   const units = "metric";
 
@@ -221,7 +228,7 @@ function fetchForecast(url) {
     });
 }
 
-// === Member Directory ===
+// === Load Member Directory ===
 async function loadMembers() {
   const container = document.getElementById("member-directory");
   if (!container) return;
@@ -254,17 +261,15 @@ function renderMembers(container, members) {
 }
 
 function getMembershipLevel(level) {
-  return level === 'gold' ? "Gold Member"
-       : level === 'silver' ? "Silver Member"
-       : "Bronze Member";
+  return level.charAt(0).toUpperCase() + level.slice(1) + " Member";
 }
 
-// === Spotlight Display ===
+// === Spotlight Members ===
 function loadSpotlights() {
   const container = document.getElementById("spotlightContainer");
   if (!container) return;
 
-  fetch("members.json")
+  fetch("data/members.json")
     .then(res => res.json())
     .then(data => {
       data.forEach(member => {
@@ -283,13 +288,3 @@ function loadSpotlights() {
       container.innerHTML = "<p>Could not load members.</p>";
     });
 }
- 
-  document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
-
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
-  });
-

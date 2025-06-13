@@ -1,61 +1,61 @@
 [
   {
     "name": "Nike Art Gallery",
-    "image": "images/nike-art.jpg",
+    "image": "images/nike-art.webp",
     "description": "One of the largest art galleries in West Africa showcasing traditional and contemporary Nigerian art.",
     "location": "Lekki"
   },
   {
     "name": "Lekki Conservation Centre",
-    "image": "images/lekki-conservation.jpg",
+    "image": "images/lekki-conservation.webp",
     "description": "Explore Nigeria’s longest canopy walkway, wildlife, and lush vegetation.",
     "location": "Lekki"
   },
   {
     "name": "Freedom Park",
-    "image": "images/freedom-park.jpg",
+    "image": "images/freedom-park.webp",
     "description": "A former colonial prison transformed into a memorial and cultural site.",
     "location": "Lagos Island"
   },
   {
     "name": "National Theatre",
-    "image": "images/national-theatre.jpg",
+    "image": "images/national-theatre.webp",
     "description": "Iconic structure for arts, drama, and musical performances.",
     "location": "Iganmu"
   },
   {
     "name": "Elegushi Beach",
-    "image": "images/elegushi.jpg",
+    "image": "images/elegushi.webp",
     "description": "A lively beach with restaurants, music, and nightlife.",
     "location": "Lekki"
   },
   {
     "name": "Tarkwa Bay",
-    "image": "images/tarkwa-bay.jpg",
+    "image": "images/tarkwa-bay.webp",
     "description": "Secluded beach ideal for picnics, surfing, and sunbathing.",
     "location": "Near Lagos Harbour"
   },
   {
     "name": "Omu Resort",
-    "image": "images/omu-resort.jpg",
+    "image": "images/omu-resort.webp",
     "description": "Combines amusement park, zoo, and water sports for family fun.",
     "location": "Bogije"
   },
   {
     "name": "The Cathedral Church of Christ",
-    "image": "images/cathedral.jpg",
+    "image": "images/cathedral.webp",
     "description": "Historic Anglican cathedral known for its colonial architecture.",
     "location": "Lagos Island"
   },
   {
     "name": "National Museum Lagos",
-    "image": "images/national-museum.jpg",
+    "image": "images/national-museum.webp",
     "description": "Houses artifacts and cultural relics including the famous Benin Bronzes.",
     "location": "Onikan"
   },
   {
     "name": "Kalakuta Museum",
-    "image": "images/kalakuta.jpg",
+    "image": "images/kalakuta.webp",
     "description": "Fela Kuti’s former home turned into a museum of Afrobeat legacy.",
     "location": "Ikeja"
   }

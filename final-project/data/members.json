@@ -2,25 +2,25 @@
   {
     "name": "Sarah Adeyemi",
     "position": "Head Baker",
-    "image": "images/staff/sarah.webp",
+    "image": "images/sarah.webp",
     "bio": "Sarah crafts delightful pastries with love and precision every day at Edsarah."
   },
   {
     "name": "Michael Okoro",
     "position": "Store Manager",
-    "image": "images/staff/michael.webp",
+    "image": "images/michael.webp",
     "bio": "Michael ensures the supermart runs smoothly and customers leave satisfied."
   },
   {
     "name": "Grace Eze",
     "position": "Cashier",
-    "image": "images/staff/grace.webp",
+    "image": "images/grace.webp",
     "bio": "Grace greets every customer with a smile and handles transactions efficiently."
   },
   {
     "name": "Tunde Balogun",
     "position": "Logistics Officer",
-    "image": "images/staff/tunde.webp",
+    "image": "images/tunde.webp",
     "bio": "Tunde keeps our deliveries prompt and shelves stocked with the freshest products."
   }
 ]
