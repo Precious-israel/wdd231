@@ -1,17 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-  initNavigation();
-  initFooterInfo();
-  initModal();
-  initThankYouPage();
-  initSubscriptionForm();
-  loadLagosSites();
-  loadBranches();
-  loadWeather();
-  loadMembers();
-  loadSpotlights();
-});
-
-// === Responsive Navigation ===
+// Navigation Toggle
 function initNavigation() {
   const hamburger = document.getElementById('hamburger') || document.querySelector('.hamburger');
   const navLinks = document.getElementById('navLinks') || document.querySelector('.nav-links');
@@ -30,7 +17,7 @@ function initNavigation() {
   });
 }
 
-// === Footer Info (Year & Last Modified) ===
+// Footer Info
 function initFooterInfo() {
   const yearSpan = document.getElementById('year');
   const lastModifiedSpan = document.getElementById('lastModified');
@@ -39,19 +26,14 @@ function initFooterInfo() {
   if (lastModifiedSpan) lastModifiedSpan.textContent = document.lastModified;
 }
 
-// === Complaint Modal ===
+// Modal Dialog
 function initModal() {
   const modal = document.getElementById('complaintModal');
   const openBtn = document.getElementById('openModalBtn');
   const closeBtn = document.getElementById('closeModalBtn');
 
-  openBtn?.addEventListener('click', () => {
-    modal.style.display = 'block';
-  });
-
-  closeBtn?.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
+  openBtn?.addEventListener('click', () => modal.style.display = 'block');
+  closeBtn?.addEventListener('click', () => modal.style.display = 'none');
 
   window.addEventListener('click', e => {
     if (e.target === modal) {
@@ -60,7 +42,7 @@ function initModal() {
   });
 }
 
-// === Thank You Page Handler ===
+// Thank You Page Display
 function initThankYouPage() {
   const thankYouMessage = document.getElementById("thankyou-message");
   if (!thankYouMessage) return;
@@ -86,7 +68,7 @@ function initThankYouPage() {
   thankYouMessage.focus();
 }
 
-// === Subscription Form ===
+// Subscription Form
 function initSubscriptionForm() {
   const form = document.getElementById('subscribe-form');
   if (!form) return;
@@ -112,7 +94,7 @@ function initSubscriptionForm() {
   });
 }
 
-// === Load Lagos Sites ===
+// Load Lagos Sites
 function loadLagosSites() {
   const locationGrid = document.getElementById("locationGrid");
   if (!locationGrid) return;
@@ -144,13 +126,13 @@ function loadLagosSites() {
     });
 }
 
-// === Load Branches ===
+// Load Branches
 function loadBranches() {
   const container = document.getElementById('branches-container');
   const branchSelect = document.getElementById('branch');
   if (!container || !branchSelect) return;
 
-  fetch('data/branches,.json')
+  fetch('data/branches.json')
     .then(res => {
       if (!res.ok) throw new Error('Failed to fetch');
       return res.json();
@@ -183,7 +165,7 @@ function loadBranches() {
     });
 }
 
-// === Load Weather Info ===
+// Weather Section
 function loadWeather() {
   const apiKey = "dee629b7caae56879f8e7d4eb7c8ffaa";
   const city = "Lagos,NG";
@@ -252,43 +234,40 @@ function fetchForecast(url) {
     });
 }
 
-// === Load Member Directory ===
-async function loadMembers() {
+// Load Members
+function loadMembers() {
   const container = document.getElementById("member-directory");
   if (!container) return;
 
-  try {
-    const res = await fetch("data/members.json");
-    const members = await res.json();
-    renderMembers(container, members);
-  } catch (error) {
-    console.error("Failed to load members:", error);
-    container.innerHTML = "<p>Error loading members data.</p>";
-  }
-}
-
-function renderMembers(container, members) {
-  container.innerHTML = "";
-  members.forEach(member => {
-    const card = document.createElement("section");
-    card.innerHTML = `
-      <div class="member-info">
-        <h2>${member.name}</h2>
-        <img src="${member.image}" alt="${member.name} logo" loading="lazy" />
-        <p><strong>Email:</strong> ${member.email}</p>
-        <p><strong>Phone:</strong> ${member.phone}</p>
-        <p><strong>Website:</strong> <a href="${member.website}" target="_blank">Visit Website</a></p>
-        <p><strong>Membership:</strong> ${getMembershipLevel(member.membership)}</p>
-      </div>`;
-    container.appendChild(card);
-  });
+  fetch("data/members.json")
+    .then(res => res.json())
+    .then(members => {
+      container.innerHTML = "";
+      members.forEach(member => {
+        const card = document.createElement("section");
+        card.innerHTML = `
+          <div class="member-info">
+            <h2>${member.name}</h2>
+            <img src="${member.image}" alt="${member.name} logo" loading="lazy" />
+            <p><strong>Email:</strong> ${member.email}</p>
+            <p><strong>Phone:</strong> ${member.phone}</p>
+            <p><strong>Website:</strong> <a href="${member.website}" target="_blank">Visit Website</a></p>
+            <p><strong>Membership:</strong> ${getMembershipLevel(member.membership)}</p>
+          </div>`;
+        container.appendChild(card);
+      });
+    })
+    .catch(error => {
+      console.error("Failed to load members:", error);
+      container.innerHTML = "<p>Error loading members data.</p>";
+    });
 }
 
 function getMembershipLevel(level) {
   return level.charAt(0).toUpperCase() + level.slice(1) + " Member";
 }
 
-// === Spotlight Members ===
+// Spotlight Members
 function loadSpotlights() {
   const container = document.getElementById("spotlightContainer");
   if (!container) return;
@@ -302,8 +281,8 @@ function loadSpotlights() {
         card.innerHTML = `
           <img src="${member.image}" alt="${member.name}">
           <h3>${member.name}</h3>
-          <h4>${member.position}</h4>
-          <p>${member.bio}</p>`;
+          <h4>${member.position || "Member"}</h4>
+          <p>${member.bio || "No bio available."}</p>`;
         container.appendChild(card);
       });
     })
@@ -312,3 +291,57 @@ function loadSpotlights() {
       container.innerHTML = "<p>Could not load members.</p>";
     });
 }
+
+// === Load Branches ===
+function loadBranches() {
+  const container = document.getElementById('branches-container');
+  const branchSelect = document.getElementById('branch');
+  if (!container || !branchSelect) return;
+
+  fetch('data/branches,.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Failed to fetch');
+      return res.json();
+    })
+    .then(data => {
+      container.innerHTML = '';
+      branchSelect.innerHTML = '<option value="">-- Select Branch --</option>';
+
+      data.forEach(branch => {
+        const branchEl = document.createElement('section');
+        branchEl.className = 'branch';
+        branchEl.innerHTML = `
+          <img src="${branch.images}" alt="${branch.name}" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:10px;">
+          <h3>${branch.name}</h3>
+          <p><strong>Location:</strong> ${branch.location}</p>
+          <p><strong>Features:</strong> ${branch.features}</p>
+          ${branch.contact ? `<p><strong>Contact:</strong> ${branch.contact}</p>` : ''}
+        `;
+        container.appendChild(branchEl);
+
+        const option = document.createElement('option');
+        option.value = branch.name;
+        option.textContent = branch.name;
+        branchSelect.appendChild(option);
+      });
+    })
+    .catch(err => {
+      console.error('Error loading branches:', err);
+      container.innerHTML = `<p>Unable to load branches at the moment.</p>`;
+    });
+}
+
+
+// Main initialization
+document.addEventListener("DOMContentLoaded", () => {
+  initNavigation();
+  initFooterInfo();
+  initModal();
+  initThankYouPage();
+  initSubscriptionForm();
+  loadLagosSites();
+  loadBranches();
+  loadWeather();
+  loadMembers();
+  loadSpotlights();
+});
