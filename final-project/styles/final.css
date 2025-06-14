@@ -389,6 +389,8 @@ footer {
   flex-wrap: wrap;
   gap: 2rem;
   margin-bottom: 3rem;
+  max-width: 90%;
+  justify-self: center;
 }
 
 .shadow-box {
@@ -418,6 +420,8 @@ footer {
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 102, 204, 0.1);
   margin-bottom: 1.5rem;
+   width: 90%;
+  justify-self: center;
 }
 
 .values h2 {
@@ -437,6 +441,64 @@ footer {
   border-radius: 5px;
   font-weight: 500;
   color: #002244;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Aligns image to the left */
+  width: 90%;
+  margin: auto;
+}
+
+.team h2 {
+  text-align: center;
+  margin-bottom: 10px; /* Space between h2 and paragraph */
+  width: 40%;
+}
+
+.team p {
+  text-align: center;
+  max-width: 40%;
+}
+
+.team img {
+  max-width: 50%;
+  height: 50% ;
+  object-fit: cover; /* Ensures the image covers its container */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-bottom: 10%;
+}
+
+.cta {
+  position: relative;
+
+  bottom: 20px;
+  left: 20px;
+  text-align: left;
+}
+
+.cta h2 {
+  margin-bottom: 10px;
+}
+
+.cta p {
+  max-width: 70%;
+  margin-bottom: 20px;
+}
+
+.cta .btn {
+  padding: 10px 15px;
+  background-color: #ff5722;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cta .btn:hover {
+  background-color: #e64a19;
 }
 
 /* Container */
