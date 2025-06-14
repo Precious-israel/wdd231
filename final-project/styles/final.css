@@ -1,3 +1,11 @@
+:root {
+  --primary-bg: #024;
+  --primary-text: #fff;
+  --accent-color: #fdb813;
+  --accent-hover: #ff9800;
+  --highlight-color: #ef9413;
+}
+
 /* Reset & Base */
 * {
   box-sizing: border-box;
@@ -10,53 +18,33 @@ body {
   line-height: 1.6;
 }
 
-/* Global Button Style */
-/* .btn,
+/* Buttons */
+.btn,
 .hero-content .btn,
 .view-buttons button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.btn,
-.view-buttons button {
-  background-color: #024;
-  color: #fff;
-}
-
-.btn:hover,
-.view-buttons button:hover {
-  background-color: #046;
-} */
-
-.hero-content .btn {
-  background-color: #fdb813;
+  background-color: var(--accent-color);
   color: #000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .hero-content .btn:hover {
-  background-color: #ff9800;
+  background-color: var(--accent-hover);
 }
 
 /* Header & Navigation */
-header {
-  margin-bottom: 0;
-}
+header {}
 
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 5%;
-  background: #024;
-  color: #fff;
+  background: var(--primary-bg);
+  color: var(--primary-text);
   position: relative;
 }
 
@@ -66,21 +54,27 @@ nav {
   gap: 0.75rem;
 }
 
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.1;
+}
+
 .logo-title {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
 .logo-subtitle {
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+  font-weight: normal;
 }
 
-.logo-text {
-  line-height: 1.1;
-}
-
-nav .logo {
-  height: 50px;
+.logo-container img {
+  height: 4rem;
+  width: 2.5rem;
+  object-fit: cover;
 }
 
 .nav-links {
@@ -92,7 +86,7 @@ nav .logo {
 }
 
 .nav-links a {
-  color: #fff;
+  color: var(--primary-text);
   text-decoration: none;
   padding: 0.5rem;
   transition: color 0.3s ease, transform 0.3s ease;
@@ -100,21 +94,21 @@ nav .logo {
 
 .nav-links a:hover,
 .nav-links a:focus {
-  color: #ef9413;
+  color: var(--highlight-color);
   transform: scale(1.1);
   text-shadow: 0 0 5px rgba(239, 148, 19, 0.7);
 }
 
 .nav-links a.active {
-  border-bottom: 2px solid #fff;
-  font-weight: bolder;
+  border-bottom: 2px solid var(--primary-text);
+  font-weight: bold;
 }
 
 .hamburger {
   display: none;
   font-size: 1.5rem;
   background: none;
-  color: #fff;
+  color: var(--primary-text);
   border: none;
   cursor: pointer;
 }
@@ -140,8 +134,8 @@ nav .logo {
 .hero-content {
   position: absolute;
   bottom: 1rem;
-  right: 5.0rem;
-  left: 6.0rem;
+  right: 5rem;
+  left: 6rem;
 }
 
 /* Home Sections */
@@ -152,9 +146,9 @@ nav .logo {
 }
 
 #home {
-  color: #024;
+  color: var(--primary-bg);
   padding-left: 120px;
-} 
+}
 
 /* View Buttons */
 .view-buttons {
@@ -181,7 +175,7 @@ nav .logo {
   .nav-links {
     display: none;
     flex-direction: column;
-    background: #024;
+    background: var(--primary-bg);
     width: 100%;
     position: absolute;
     top: 70px;
@@ -226,8 +220,8 @@ nav .logo {
 
 /* Footer */
 footer {
-  background: #024;
-  color: #fff;
+  background: var(--primary-bg);
+  color: var(--primary-text);
   padding: 1.5rem;
 }
 
@@ -537,11 +531,13 @@ footer {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+
 }
 
 /* Branches Section */
 .branches-section {
   padding: 2rem 1rem;
+  
 }
 
 .branches {
@@ -559,7 +555,7 @@ footer {
     "image location"
     "image features"
     "image contact";
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 40% 50%;
   background: #fff;
   padding: 1rem;
   border-radius: 10px;
@@ -568,6 +564,7 @@ footer {
   min-height: 250px; /* Ensures enough vertical height for layout */
   gap: 0.5rem 1rem;
   align-items: stretch; /* Ensures both sides stretch equally */
+  
 }
 
 .branch:hover {
@@ -652,8 +649,8 @@ footer {
   padding-top: 60px;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   background: rgba(0, 0, 0, 0.6);
 }
 
@@ -750,12 +747,14 @@ footer {
   gap: 2rem;
   grid-template-columns: 1fr;
   overflow: hidden;
+  width: 94%;
+  justify-self: center;
 }
 
 .card {
   display: grid;
   grid-template-areas: "image description";
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 60% 40%;
   height: 250px; /* Uniform card height */
   gap: 1rem;
   align-items: center; /* Align content vertically */
@@ -767,16 +766,6 @@ footer {
 }
 
 
-.card h2 {
-  grid-area: name;
-  font-size: 1.1rem;
-  font-weight: bold;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0;
-}
 
 .card img {
   grid-area: image;
@@ -786,10 +775,6 @@ footer {
   border-radius: 8px;
 }
 
-.card figure {
-  grid-area: image;
-  margin: 0;
-}
 
 .card p {
   grid-area: description;
@@ -877,3 +862,4 @@ footer {
 #openModalBtn:hover {
   background-color: #046;
 }
+
