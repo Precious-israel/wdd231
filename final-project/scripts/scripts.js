@@ -17,6 +17,44 @@ function initNavigation() {
   });
 }
 
+// === Hamburger Menu ===
+function setupHamburgerMenu() {
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+  const navItems = navLinks?.querySelectorAll("a");
+
+  hamburger?.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("show");
+    hamburger.innerHTML = isOpen ? "&times;" : "&#9776;";
+    navLinks.classList.add(isOpen ? "animate-slide-in" : "animate-slide-out");
+    navLinks.classList.remove(isOpen ? "animate-slide-out" : "animate-slide-in");
+
+    navItems?.forEach((link, index) => {
+      link.style.animation = isOpen ? `fadeInUp 0.4s ease forwards ${index * 0.15}s` : "";
+    });
+
+    if (!isOpen) {
+      navLinks.addEventListener("animationend", () => {
+        if (!navLinks.classList.contains("show")) {
+          navLinks.classList.remove("show");
+        }
+      }, { once: true });
+    }
+  });
+}
+
+// === Navigation Wayfinding ===
+function highlightCurrentNav() {
+  const currentPage = location.pathname.split("/").pop();
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    const href = link.getAttribute("href");
+    if (href === currentPage || (href === "index.html" && currentPage === "")) {
+      link.classList.add("active");
+    }
+  });
+}
+
+
 // Footer Info
 function initFooterInfo() {
   const yearSpan = document.getElementById('year');

@@ -11,7 +11,7 @@ body {
 }
 
 /* Global Button Style */
-.btn,
+/* .btn,
 .hero-content .btn,
 .view-buttons button {
   display: inline-block;
@@ -33,7 +33,7 @@ body {
 .btn:hover,
 .view-buttons button:hover {
   background-color: #046;
-}
+} */
 
 .hero-content .btn {
   background-color: #fdb813;
@@ -107,7 +107,7 @@ nav .logo {
 
 .nav-links a.active {
   border-bottom: 2px solid #fff;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .hamburger {
@@ -127,11 +127,12 @@ nav .logo {
   object-fit: cover;
   display: block;
   margin: 0 auto;
+  margin-top: -5px;
 }
 
 .hero {
   position: relative;
-  width: 92%;
+  width: 100%;
   margin: 5px auto;
   padding: 0 1%;
 }
@@ -139,19 +140,20 @@ nav .logo {
 .hero-content {
   position: absolute;
   bottom: 1rem;
-  right: 1.5rem;
+  right: 5.0rem;
+  left: 6.0rem;
 }
 
 /* Home Sections */
 .home {
-  width: 92%;
+  width: 100%;
   margin: 5px auto;
   padding: 0 1%;
 }
 
 h1 {
   color: #024;
-  padding-left: 80px;
+  padding-left: 120px;
 }
 
 /* View Buttons */
@@ -307,7 +309,6 @@ footer {
 /* === Spotlights Section === */
 .spotlights {
   width: 90%;
-  max-width: 1200px;
   margin: 2rem auto;
   padding: 1rem;
   background-color: #eef;
@@ -363,24 +364,24 @@ footer {
 }
 
 /* About Page Hero */
-.hero-about {
+/*.hero {
   padding: 4rem 2rem;
   color: #fff;
   background-color: #003;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   margin-bottom: 2rem;
-}
+}*/
 
-.hero-about .hero-text {
+/*.hero-about .hero-text {
   background: rgba(0, 0, 0, 0.6);
   padding: 2rem;
   border-radius: 10px;
-  max-width: 900px;
-  margin: auto;
+  max-width: 500px;
+  margin: 0;
   font-size: 1.1rem;
   line-height: 1.8;
-}
+}*/
 
 /* Mission & Core Values */
 .mission-vision-boxed {
@@ -400,13 +401,14 @@ footer {
 }
 
 .shadow-box:hover {
-  transform: translateY(-5px);
+  transform: translateY(5px);
 }
 
 .shadow-box h2 {
   color: #003366;
   border-bottom: 2px solid #005599;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.2rem;
+  padding-top: 5px;
 }
 
 .values {
@@ -415,11 +417,12 @@ footer {
   border-left: 5px solid #005599;
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 102, 204, 0.1);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .values h2 {
   color: #003366;
+  font-weight: bold;
 }
 
 .values ul {
@@ -438,7 +441,7 @@ footer {
 
 /* Container */
 .container {
-  max-width: 1200px;
+  max-width: 90%;
   margin: 2rem auto;
   padding: 1rem;
   background: #fff;
@@ -640,7 +643,7 @@ footer {
   }
 
   .card img {
-    max-height: 250px;
+    max-height: 300px;
   }
 }
 
