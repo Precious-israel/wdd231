@@ -6,7 +6,6 @@
   --highlight-color: #ef9413;
 }
 
-/* Reset & Base */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -36,8 +35,6 @@ body {
 }
 
 /* Header & Navigation */
-header {}
-
 nav {
   display: flex;
   align-items: center;
@@ -72,10 +69,12 @@ nav {
 }
 
 .logo-container img {
-  height: 4rem;
-  width: 2.5rem;
-  object-fit: cover;
+  max-height: 4rem;
+  height: auto;
+  width: auto;
+  object-fit: contain;
 }
+
 
 .nav-links {
   display: flex;
@@ -146,8 +145,8 @@ nav {
 }
 
 #home {
-  color: var(--primary-bg);
-  padding-left: 120px;
+  color: rgb(35, 126, 161);
+
 }
 
 /* View Buttons */
@@ -522,11 +521,10 @@ footer {
 }
 
 
-
 /* Container */
 .container {
   max-width: 90%;
-  margin: 2rem auto;
+  margin: 0.5rem auto;
   padding: 1rem;
   background: #fff;
   border-radius: 10px;
@@ -537,6 +535,10 @@ footer {
 /* Branches Section */
 .branches-section {
   padding: 2rem 1rem;
+  text-align: center;
+  margin-top: 0.1rem;
+  font-size: 1.2rem;
+  color: rgb(25, 96, 124) ;
   
 }
 
@@ -638,8 +640,6 @@ footer {
     margin-bottom: 0.5rem;
   }
 }
-
-
 
 /* Modal */
 .modal {
@@ -749,8 +749,24 @@ footer {
   overflow: hidden;
   width: 94%;
   justify-self: center;
+  padding:0.2rem ;
 }
 
+/* Style and spacing for the visit message */
+#visit-message {
+  margin-bottom: 2rem; /* space between #visit-message and .discover-grid */
+  text-align: center;
+  font-size: 1.5rem;
+  color: #555;
+  color: #000;
+}
+h1 {
+  margin-top: 1.5rem; /* space between image and heading */
+  margin-bottom: 1rem; /* space between h1 and #visit-message */
+  text-align: center;
+  font-size: 2rem;
+  color: rgb(35, 126, 161);
+}
 .card {
   display: grid;
   grid-template-areas: "image description";
@@ -765,8 +781,6 @@ footer {
   overflow: hidden;
 }
 
-
-
 .card img {
   grid-area: image;
   width: 100%;
@@ -774,7 +788,6 @@ footer {
   object-fit: cover;
   border-radius: 8px;
 }
-
 
 .card p {
   grid-area: description;
