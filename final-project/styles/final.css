@@ -468,7 +468,7 @@ footer {
   object-fit: cover; /* Ensures the image covers its container */
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  margin-bottom: 10%;
+  margin-bottom: 2%;
 }
 
 .cta {
@@ -481,11 +481,16 @@ footer {
 
 .cta h2 {
   margin-bottom: 10px;
+   margin-left: 5%;
 }
 
 .cta p {
-  max-width: 70%;
+  max-width: 90%;
   margin-bottom: 20px;
+  padding: 10px 15px;
+  margin-left: 5%;
+  font-weight: bold;
+  
 }
 
 .cta .btn {
@@ -495,6 +500,7 @@ footer {
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
+  margin-left: 5%;
 }
 
 .cta .btn:hover {
