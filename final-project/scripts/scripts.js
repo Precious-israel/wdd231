@@ -1,13 +1,30 @@
-// Navigation Toggle
+// === Navigation Toggle and Hamburger Menu ===
 function initNavigation() {
   const hamburger = document.getElementById('hamburger') || document.querySelector('.hamburger');
   const navLinks = document.getElementById('navLinks') || document.querySelector('.nav-links');
+  const navItems = navLinks?.querySelectorAll('a');
   const menuToggle = document.getElementById('menu-toggle');
   const navbar = document.getElementById('navbar');
 
   hamburger?.addEventListener('click', () => {
-    navLinks?.classList.toggle('active');
-    navLinks?.classList.toggle('show');
+    const isOpen = navLinks.classList.toggle('show');
+    navLinks.classList.toggle('active');
+
+    hamburger.innerHTML = isOpen ? '&times;' : '&#9776;';
+    navLinks.classList.add(isOpen ? 'animate-slide-in' : 'animate-slide-out');
+    navLinks.classList.remove(isOpen ? 'animate-slide-out' : 'animate-slide-in');
+
+    navItems?.forEach((link, index) => {
+      link.style.animation = isOpen ? `fadeInUp 0.4s ease forwards ${index * 0.15}s` : '';
+    });
+
+    if (!isOpen) {
+      navLinks.addEventListener('animationend', () => {
+        if (!navLinks.classList.contains('show')) {
+          navLinks.classList.remove('show');
+        }
+      }, { once: true });
+    }
   });
 
   menuToggle?.addEventListener('click', () => {
@@ -17,45 +34,18 @@ function initNavigation() {
   });
 }
 
-// === Hamburger Menu ===
-function setupHamburgerMenu() {
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("navLinks");
-  const navItems = navLinks?.querySelectorAll("a");
-
-  hamburger?.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("show");
-    hamburger.innerHTML = isOpen ? "&times;" : "&#9776;";
-    navLinks.classList.add(isOpen ? "animate-slide-in" : "animate-slide-out");
-    navLinks.classList.remove(isOpen ? "animate-slide-out" : "animate-slide-in");
-
-    navItems?.forEach((link, index) => {
-      link.style.animation = isOpen ? `fadeInUp 0.4s ease forwards ${index * 0.15}s` : "";
-    });
-
-    if (!isOpen) {
-      navLinks.addEventListener("animationend", () => {
-        if (!navLinks.classList.contains("show")) {
-          navLinks.classList.remove("show");
-        }
-      }, { once: true });
-    }
-  });
-}
-
 // === Navigation Wayfinding ===
 function highlightCurrentNav() {
-  const currentPage = location.pathname.split("/").pop();
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    const href = link.getAttribute("href");
-    if (href === currentPage || (href === "index.html" && currentPage === "")) {
-      link.classList.add("active");
+  const currentPage = location.pathname.split('/').pop();
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPage || (href === 'index.html' && currentPage === '')) {
+      link.classList.add('active');
     }
   });
 }
 
-
-// Footer Info
+// === Footer Info ===
 function initFooterInfo() {
   const yearSpan = document.getElementById('year');
   const lastModifiedSpan = document.getElementById('lastModified');
@@ -64,7 +54,7 @@ function initFooterInfo() {
   if (lastModifiedSpan) lastModifiedSpan.textContent = document.lastModified;
 }
 
-// Modal Dialog
+// === Modal Dialog ===
 function initModal() {
   const modal = document.getElementById('complaintModal');
   const openBtn = document.getElementById('openModalBtn');
@@ -80,19 +70,19 @@ function initModal() {
   });
 }
 
-// Thank You Page Display
+// === Thank You Page Display ===
 function initThankYouPage() {
-  const thankYouMessage = document.getElementById("thankyou-message");
+  const thankYouMessage = document.getElementById('thankyou-message');
   if (!thankYouMessage) return;
 
   const params = new URLSearchParams(window.location.search);
-  const name = decodeURIComponent(params.get("name") || "Valued Customer");
-  const email = decodeURIComponent(params.get("email") || "your email");
+  const name = decodeURIComponent(params.get('name') || 'Valued Customer');
+  const email = decodeURIComponent(params.get('email') || 'your email');
   const time = new Date().toLocaleString();
 
-  const records = JSON.parse(localStorage.getItem("subscriptionRecords")) || [];
+  const records = JSON.parse(localStorage.getItem('subscriptionRecords')) || [];
   records.push({ name, email, time });
-  localStorage.setItem("subscriptionRecords", JSON.stringify(records));
+  localStorage.setItem('subscriptionRecords', JSON.stringify(records));
 
   thankYouMessage.innerHTML = `
     <h2>Thank You, ${name}!</h2>
@@ -106,7 +96,7 @@ function initThankYouPage() {
   thankYouMessage.focus();
 }
 
-// Subscription Form
+// === Subscription Form ===
 function initSubscriptionForm() {
   const form = document.getElementById('subscribe-form');
   if (!form) return;
@@ -132,22 +122,19 @@ function initSubscriptionForm() {
   });
 }
 
-// Load Lagos Sites
+// === Load Lagos Sites ===
 function loadLagosSites() {
-  const locationGrid = document.getElementById("locationGrid");
+  const locationGrid = document.getElementById('locationGrid');
   if (!locationGrid) return;
 
-  locationGrid.innerHTML = "";
+  locationGrid.innerHTML = '';
 
-  fetch("scripts/lagos-sites.json")
-    .then(res => {
-      if (!res.ok) throw new Error("Failed to fetch Lagos sites.");
-      return res.json();
-    })
+  fetch('scripts/lagos-sites.json')
+    .then(res => res.ok ? res.json() : Promise.reject('Failed to fetch Lagos sites.'))
     .then(locations => {
       locations.forEach(site => {
-        const card = document.createElement("div");
-        card.className = "card";
+        const card = document.createElement('div');
+        card.className = 'card';
         card.innerHTML = `
           <img src="${site.image}" alt="${site.name}">
           <div class="card-body">
@@ -159,23 +146,31 @@ function loadLagosSites() {
       });
     })
     .catch(err => {
-      console.error("Error loading locations:", err);
+      console.error('Error loading locations:', err);
       locationGrid.innerHTML = `<p>Unable to load beautiful sites. Please try again later.</p>`;
     });
 }
 
-// Load Branches
+// === Load Branches ===
 function loadBranches() {
   const container = document.getElementById('branches-container');
   const branchSelect = document.getElementById('branch');
-  if (!container || !branchSelect) return;
+
+  if (!container || !branchSelect) {
+    console.error('Missing #branches-container or #branch select in HTML.');
+    return;
+  }
 
   fetch('data/branches.json')
     .then(res => {
-      if (!res.ok) throw new Error('Failed to fetch');
+      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
       return res.json();
     })
     .then(data => {
+      if (!Array.isArray(data)) {
+        throw new Error('Expected JSON array for branches data.');
+      }
+
       container.innerHTML = '';
       branchSelect.innerHTML = '<option value="">-- Select Branch --</option>';
 
@@ -199,30 +194,27 @@ function loadBranches() {
     })
     .catch(err => {
       console.error('Error loading branches:', err);
-      container.innerHTML = `<p>Unable to load branches at the moment.</p>`;
+      container.innerHTML = '<p>Unable to load branches at the moment.</p>';
     });
 }
 
-// Weather Section
+// === Weather Section ===
 function loadWeather() {
-  const apiKey = "dee629b7caae56879f8e7d4eb7c8ffaa";
-  const city = "Lagos,NG";
-  const units = "metric";
+  const apiKey = 'dee629b7caae56879f8e7d4eb7c8ffaa';
+  const city = 'Lagos,NG';
+  const units = 'metric';
 
-  const currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${apiKey}`;
-
-  fetchWeather(currentUrl);
-  fetchForecast(forecastUrl);
+  fetchWeather(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`);
+  fetchForecast(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${apiKey}`);
 }
 
 function fetchWeather(url) {
   fetch(url)
     .then(res => res.json())
     .then(data => {
-      const tempEl = document.getElementById("current-temp");
-      const descEl = document.getElementById("current-desc");
-      const iconEl = document.getElementById("current-icon");
+      const tempEl = document.getElementById('current-temp');
+      const descEl = document.getElementById('current-desc');
+      const iconEl = document.getElementById('current-icon');
 
       if (tempEl && descEl && iconEl) {
         tempEl.textContent = `Temperature: ${data.main.temp} °C`;
@@ -232,9 +224,9 @@ function fetchWeather(url) {
       }
     })
     .catch(err => {
-      console.error("Weather error:", err);
-      const tempEl = document.getElementById("current-temp");
-      if (tempEl) tempEl.textContent = "Unable to load weather data.";
+      console.error('Weather error:', err);
+      const tempEl = document.getElementById('current-temp');
+      if (tempEl) tempEl.textContent = 'Unable to load weather data.';
     });
 }
 
@@ -242,47 +234,45 @@ function fetchForecast(url) {
   fetch(url)
     .then(res => res.json())
     .then(data => {
-      const forecastEl = document.getElementById("forecast");
+      const forecastEl = document.getElementById('forecast');
       if (!forecastEl) return;
 
-      forecastEl.innerHTML = "";
+      forecastEl.innerHTML = '';
       const daily = {};
 
       data.list.forEach(entry => {
-        const [date, time] = entry.dt_txt.split(" ");
-        if (time === "12:00:00" && !daily[date]) {
+        const [date, time] = entry.dt_txt.split(' ');
+        if (time === '12:00:00' && !daily[date]) {
           daily[date] = entry;
         }
       });
 
       Object.entries(daily).slice(0, 3).forEach(([date, entry]) => {
-        const iconUrl = `https://openweathermap.org/img/wn/${entry.weather[0].icon}@2x.png`;
-        const li = document.createElement("li");
-        li.innerHTML = `
-          <span>${date}: ${entry.main.temp} °C</span>
-          <img src="${iconUrl}" alt="${entry.weather[0].description}" />
-        `;
-        forecastEl.appendChild(li);
+        forecastEl.innerHTML += `
+          <li>
+            <span>${date}: ${entry.main.temp} °C</span>
+            <img src="https://openweathermap.org/img/wn/${entry.weather[0].icon}@2x.png" alt="${entry.weather[0].description}" />
+          </li>`;
       });
     })
     .catch(err => {
-      console.error("Forecast error:", err);
-      const forecastEl = document.getElementById("forecast");
-      if (forecastEl) forecastEl.innerHTML = "<li>Unable to load forecast.</li>";
+      console.error('Forecast error:', err);
+      const forecastEl = document.getElementById('forecast');
+      if (forecastEl) forecastEl.innerHTML = '<li>Unable to load forecast.</li>';
     });
 }
 
-// Load Members
+// === Load Members ===
 function loadMembers() {
-  const container = document.getElementById("member-directory");
+  const container = document.getElementById('member-directory');
   if (!container) return;
 
-  fetch("data/members.json")
+  fetch('data/members.json')
     .then(res => res.json())
     .then(members => {
-      container.innerHTML = "";
+      container.innerHTML = '';
       members.forEach(member => {
-        const card = document.createElement("section");
+        const card = document.createElement('section');
         card.innerHTML = `
           <div class="member-info">
             <h2>${member.name}</h2>
@@ -296,82 +286,42 @@ function loadMembers() {
       });
     })
     .catch(error => {
-      console.error("Failed to load members:", error);
-      container.innerHTML = "<p>Error loading members data.</p>";
+      console.error('Failed to load members:', error);
+      container.innerHTML = '<p>Error loading members data.</p>';
     });
 }
 
 function getMembershipLevel(level) {
-  return level.charAt(0).toUpperCase() + level.slice(1) + " Member";
+  return `${level.charAt(0).toUpperCase() + level.slice(1)} Member`;
 }
 
-// Spotlight Members
+// === Spotlight Members ===
 function loadSpotlights() {
-  const container = document.getElementById("spotlightContainer");
+  const container = document.getElementById('spotlightContainer');
   if (!container) return;
 
-  fetch("data/members.json")
+  fetch('data/members.json')
     .then(res => res.json())
     .then(data => {
       data.forEach(member => {
-        const card = document.createElement("div");
-        card.className = "spotlight-card";
+        const card = document.createElement('div');
+        card.className = 'spotlight-card';
         card.innerHTML = `
           <img src="${member.image}" alt="${member.name}">
           <h3>${member.name}</h3>
-          <h4>${member.position || "Member"}</h4>
-          <p>${member.bio || "No bio available."}</p>`;
+          <h4>${member.position || 'Member'}</h4>
+          <p>${member.bio || 'No bio available.'}</p>`;
         container.appendChild(card);
       });
     })
     .catch(error => {
-      console.error("Error fetching spotlight members:", error);
-      container.innerHTML = "<p>Could not load members.</p>";
+      console.error('Error fetching spotlight members:', error);
+      container.innerHTML = '<p>Could not load members.</p>';
     });
 }
 
-// === Load Branches ===
-function loadBranches() {
-  const container = document.getElementById('branches-container');
-  const branchSelect = document.getElementById('branch');
-  if (!container || !branchSelect) return;
-
-  fetch('data/branches,.json')
-    .then(res => {
-      if (!res.ok) throw new Error('Failed to fetch');
-      return res.json();
-    })
-    .then(data => {
-      container.innerHTML = '';
-      branchSelect.innerHTML = '<option value="">-- Select Branch --</option>';
-
-      data.forEach(branch => {
-        const branchEl = document.createElement('section');
-        branchEl.className = 'branch';
-        branchEl.innerHTML = `
-          <img src="${branch.images}" alt="${branch.name}" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:10px;">
-          <h3>${branch.name}</h3>
-          <p><strong>Location:</strong> ${branch.location}</p>
-          <p><strong>Features:</strong> ${branch.features}</p>
-          ${branch.contact ? `<p><strong>Contact:</strong> ${branch.contact}</p>` : ''}
-        `;
-        container.appendChild(branchEl);
-
-        const option = document.createElement('option');
-        option.value = branch.name;
-        option.textContent = branch.name;
-        branchSelect.appendChild(option);
-      });
-    })
-    .catch(err => {
-      console.error('Error loading branches:', err);
-      container.innerHTML = `<p>Unable to load branches at the moment.</p>`;
-    });
-}
-
-
-// Main initialization
-document.addEventListener("DOMContentLoaded", () => {
+// === Initialization ===
+document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initFooterInfo();
   initModal();

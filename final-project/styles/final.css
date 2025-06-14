@@ -151,10 +151,10 @@ nav .logo {
   padding: 0 1%;
 }
 
-h1 {
+#home {
   color: #024;
   padding-left: 120px;
-}
+} 
 
 /* View Buttons */
 .view-buttons {
@@ -364,24 +364,27 @@ footer {
 }
 
 /* About Page Hero */
-/*.hero {
-  padding: 4rem 2rem;
-  color: #fff;
-  background-color: #003;
-   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
+.hero-about {
+  /* padding: 4rem 2rem; */
+  color: #003366;
+  background: #fff;
+  max-width: 90%;
+  justify-self: center;
+  margin-top: 2rem;
   margin-bottom: 2rem;
-}*/
+  text-align: center;
+}
 
-/*.hero-about .hero-text {
-  background: rgba(0, 0, 0, 0.6);
+
+ .hero-about p {
+  background: rgba(255, 255, 255, 0.6);
   padding: 2rem;
   border-radius: 10px;
-  max-width: 500px;
   margin: 0;
   font-size: 1.1rem;
   line-height: 1.8;
-}*/
+  color:#000
+} 
 
 /* Mission & Core Values */
 .mission-vision-boxed {
@@ -443,69 +446,88 @@ footer {
   color: #002244;
 }
 
+/* Meet Our Team */
 .team {
   display: flex;
   align-items: center;
-  justify-content: center; /* Aligns image to the left */
+  justify-content: space-between;
+  flex-wrap: wrap; /* Ensures responsiveness */
   width: 90%;
   margin: auto;
+  gap: 2rem;
+}
+
+.team-text {
+  flex: 1 1 45%;
+  max-width: 600px;
 }
 
 .team h2 {
-  text-align: center;
-  margin-bottom: 10px; /* Space between h2 and paragraph */
-  width: 40%;
+  text-align: left;
+  margin-bottom: 10px;
 }
 
 .team p {
-  text-align: center;
-  max-width: 40%;
+  text-align: left;
+  max-width: 100%;
 }
 
 .team img {
-  max-width: 50%;
-  height: 50% ;
-  object-fit: cover; /* Ensures the image covers its container */
+  flex: 1 1 45%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  margin-bottom: 2%;
 }
 
-.cta {
-  position: relative;
 
-  bottom: 20px;
-  left: 20px;
-  text-align: left;
+/* CTA Section Styling */
+.cta {
+  background-color: rgb(230, 242, 255); /* Light soft blue */
+  color: #002244; /* Deep navy text for contrast */
+  padding: 4rem 2rem;
+  text-align: center;
+  border-radius: 12px;
+  margin: 2rem auto;
+  width: 90%;
+  box-shadow: 0 0 12px rgba(0, 102, 204, 0.1); /* Subtle blue shadow */
+  transition: background 0.3s ease;
 }
 
 .cta h2 {
-  margin-bottom: 10px;
-   margin-left: 5%;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #003366; /* Slightly deeper blue */
 }
 
 .cta p {
-  max-width: 90%;
-  margin-bottom: 20px;
-  padding: 10px 15px;
-  margin-left: 5%;
-  font-weight: bold;
-  
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #002244;
 }
 
 .cta .btn {
-  padding: 10px 15px;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
   background-color: #ff5722;
   color: white;
-  border-radius: 5px;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
-  margin-left: 5%;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .cta .btn:hover {
   background-color: #e64a19;
+  transform: scale(1.05);
 }
+
+
 
 /* Container */
 .container {
@@ -516,6 +538,111 @@ footer {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
+
+/* Branches Section */
+.branches-section {
+  padding: 2rem 1rem;
+}
+
+.branches {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Exactly 2 columns */
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+/* Each Branch Card */
+.branch {
+  display: grid;
+  grid-template-areas:
+    "image name"
+    "image location"
+    "image features"
+    "image contact";
+  grid-template-columns: 40% 60%;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+  min-height: 250px; /* Ensures enough vertical height for layout */
+  gap: 0.5rem 1rem;
+  align-items: stretch; /* Ensures both sides stretch equally */
+}
+
+.branch:hover {
+  transform: translateY(-5px);
+}
+
+/* Image */
+
+.branch img {
+  grid-area: image;
+  width: 100%;
+  height: 100%; /* Make image fill the card height */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Text Areas */
+.branch h3 {
+  grid-area: name;
+  font-size: 1.2rem;
+  margin: 0;
+  color: #003;
+}
+
+.branch p:nth-of-type(1) {
+  grid-area: location;
+}
+
+.branch p:nth-of-type(2) {
+  grid-area: features;
+}
+
+.branch p:nth-of-type(3) {
+  grid-area: contact;
+}
+
+.branch p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.branch p strong {
+  color: #024;
+}
+
+@media (max-width: 768px) {
+  .branches {
+    grid-template-columns: 1fr; /* Single column layout on mobile */
+  }
+
+  .branch {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    min-height: auto;
+  }
+
+  .branch img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .branch h3,
+  .branch p {
+    text-align: left;
+  }
+
+  .branch p {
+    margin-bottom: 0.5rem;
+  }
+}
+
+
 
 /* Modal */
 .modal {
@@ -733,80 +860,6 @@ footer {
   }
 }
 
-/* Branches Section */
-.branches-section {
-  padding: 2rem 1rem;
-}
-
-.branches {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Exactly 2 columns */
-  gap: 2rem;
-  margin-top: 1.5rem;
-}
-
-/* Each Branch Card */
-.branch {
-  display: grid;
-  grid-template-areas:
-    "image name"
-    "image location"
-    "image features"
-    "image contact";
-  grid-template-columns: 40% 60%;
-  background: #fff;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease;
-  min-height: 250px; /* Ensures enough vertical height for layout */
-  gap: 0.5rem 1rem;
-  align-items: stretch; /* Ensures both sides stretch equally */
-}
-
-.branch:hover {
-  transform: translateY(-5px);
-}
-
-/* Image */
-
-.branch img {
-  grid-area: image;
-  width: 100%;
-  height: 100%; /* Make image fill the card height */
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-/* Text Areas */
-.branch h3 {
-  grid-area: name;
-  font-size: 1.2rem;
-  margin: 0;
-  color: #003;
-}
-
-.branch p:nth-of-type(1) {
-  grid-area: location;
-}
-
-.branch p:nth-of-type(2) {
-  grid-area: features;
-}
-
-.branch p:nth-of-type(3) {
-  grid-area: contact;
-}
-
-.branch p {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.branch p strong {
-  color: #024;
-}
 
 /* Submit Button */
 #openModalBtn {
